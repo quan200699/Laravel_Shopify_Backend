@@ -17,3 +17,10 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+Route::group(['prefix' => 'categories'], function () {
+    Route::get('/', 'WarehouseController@index')->name('warehouse.all');
+    Route::get('/{customerId}', 'WarehouseController@show')->name('warehouse.show');
+    Route::post('/', 'WarehouseController@store')->name('warehouse.store');
+    Route::put('/{customerId}', 'WarehouseController@update')->name('warehouse.update');
+    Route::delete('/{customerId}', 'WarehouseController@destroy')->name('warehouse.destroy');
+});
