@@ -8,15 +8,14 @@ class Product extends Model
 {
     //
     public $timestamps=false;
+
     protected $fillable = [
         'name',
-        'price',
-        'status',
         'preservation',
         'ingredient',
-        'instructional',
-        'mass',
         'description',
-        'saleOff'
+    ];
+    protected $casts = [
+        'createdDate' => 'datetime',
     ];
 }
