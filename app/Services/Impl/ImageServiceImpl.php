@@ -4,47 +4,49 @@
 namespace App\Services\Impl;
 
 
-use App\Repositories\ProductRepository;
+use App\Repositories\ImageRepository;
+use App\Services\ImageService;
 
-class ProductServiceImpl implements \App\Services\ProductService
+class ImageServiceImpl implements ImageService
 {
-    protected $productRepository;
 
-    public function __construct(ProductRepository  $productRepository)
+    protected $imageRepository;
+
+    public function __construct(ImageRepository  $imageRepository)
     {
-        $this->productRepository = $productRepository;
+        $this->imageRepository = $imageRepository;
     }
 
     public function getAll()
     {
-        return $this->productRepository->getAll();
+        return $this->imageRepository->getAll();
     }
 
     public function findById($id)
     {
-        $product = $this->productRepository->findById($id);
+        $image = $this->imageRepository->findById($id);
         $statusCode = 200;
-        if (!$product) {
+        if (!$image) {
             $statusCode = 404;
         }
         $data = [
             'statusCode' => $statusCode,
-            'products' => $product
+            'images' => $image
         ];
         return $data;
     }
 
     public function create($request)
     {
-        $product = $this->productRepository->create($request);
+        $image = $this->imageRepository->create($request);
 
         $statusCode = 201;
-        if (!$product)
+        if (!$image)
             $statusCode = 500;
 
         $data = [
             'statusCode' => $statusCode,
-            'products' => $product
+            'images' => $image
         ];
 
         return $data;
@@ -52,30 +54,30 @@ class ProductServiceImpl implements \App\Services\ProductService
 
     public function update($request, $id)
     {
-        $oldProduct = $this->productRepository->findById($id);
-        if (!$oldProduct) {
+        $oldImage = $this->imageRepository->findById($id);
+        if (!$oldImage) {
             $statusCode = 404;
-            $newProduct = null;
+            $newImage = null;
         } else {
-            $newProduct = $this->productRepository->update($request, $oldProduct);
+            $newImage = $this->imageRepository->update($request, $oldImage);
             $statusCode = 200;
         }
         $data = [
             'statusCode' => $statusCode,
-            'products' => $newProduct
+            'images' => $newImage
         ];
         return $data;
     }
 
     public function destroy($id)
     {
-        $product = $this->productRepository->findById($id);
+        $image = $this->imageRepository->findById($id);
         $statusCode = 200;
-        if (!$product) {
+        if (!$image) {
             $statusCode = 404;
             $message = "NOT FOUND";
         } else {
-            $this->productRepository->destroy($product);
+            $this->imageRepository->destroy($image);
             $message = "DELETE SUCCESS";
         }
         $data = [
