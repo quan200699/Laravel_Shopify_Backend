@@ -31,3 +31,10 @@ Route::group(['prefix' => 'products'], function () {
     Route::put('/{id}', 'ProductController@update')->name('product.update');
     Route::delete('/{id}', 'ProductController@destroy')->name('product.destroy');
 });
+Route::group(['prefix' => 'images'], function () {
+    Route::get('/', 'ImageController@index')->name('image.all');
+    Route::get('/{id}', 'ImageController@show')->name('image.show');
+    Route::post('/', 'ImageController@store')->name('image.store');
+    Route::put('/{id}', 'ImageController@update')->name('image.update');
+    Route::delete('/{id}', 'ImageController@destroy')->name('image.destroy');
+});
