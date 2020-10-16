@@ -13,10 +13,10 @@ class AddImagesToProductsTable extends Migration
      */
     public function up()
     {
-        Schema::table('products', function (Blueprint $table) {
+        Schema::table('images', function (Blueprint $table) {
             //
-            $table->unsignedInteger('image_id')->after('createdDate')->nullable();
-            $table->foreign('image_id')->references('id')->on('images');
+            $table->unsignedInteger('product_id')->after('url')->nullable();
+            $table->foreign('product_id')->references('id')->on('products');
         });
     }
 
@@ -27,7 +27,7 @@ class AddImagesToProductsTable extends Migration
      */
     public function down()
     {
-        Schema::table('products', function (Blueprint $table) {
+        Schema::table('images', function (Blueprint $table) {
             //
         });
     }
