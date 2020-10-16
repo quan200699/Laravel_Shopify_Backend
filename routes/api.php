@@ -38,3 +38,10 @@ Route::group(['prefix' => 'images'], function () {
     Route::put('/{id}', 'ImageController@update')->name('image.update');
     Route::delete('/{id}', 'ImageController@destroy')->name('image.destroy');
 });
+Route::group(['prefix' => 'reviews'], function () {
+    Route::get('/', 'ReviewController@index')->name('review.all');
+    Route::get('/{id}', 'ReviewController@show')->name('review.show');
+    Route::post('/', 'ReviewController@store')->name('review.store');
+    Route::put('/{id}', 'ReviewController@update')->name('review.update');
+    Route::delete('/{id}', 'ReviewController@destroy')->name('review.destroy');
+});
