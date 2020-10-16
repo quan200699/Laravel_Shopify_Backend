@@ -4,15 +4,7 @@
 namespace App\Services;
 
 
-interface CategoryService
+interface CategoryService extends Service
 {
-    public function getAll();
 
-    public function findById($id);
-
-    public function create($request);
-
-    public function update($request, $id);
-
-    public function destroy($id);
 }
