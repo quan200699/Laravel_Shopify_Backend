@@ -3,53 +3,53 @@
 
 namespace App\Services\Impl;
 
-use App\Repositories\WarehouseRepository;
-use App\Services\WarehouseService;
+use App\Repositories\WarehouseBillRepository;
+use App\Services\WarehouseBillService;
 
-class WarehouseServiceImpl implements WarehouseService
+class WarehouseBillServiceImpl implements WarehouseBillService
 {
-    protected $warehouseRepository;
+    protected $warehouseBillRepository;
 
     /**
      * CustomerServiceImpl constructor.
      * @param $warehouseRepository
      */
-    public function __construct(WarehouseRepository $warehouseRepository)
+    public function __construct(WarehouseBillRepository $warehouseBillRepository)
     {
-        $this->$warehouseRepository = $warehouseRepository;
+        $this->$warehouseBillRepository = $warehouseBillRepository;
     }
 
 
     public function getAll()
     {
-        return $this->warehouseRepository->getAll();
+        return $this->warehouseBillRepository->getAll();
     }
 
     public function findById($id)
     {
-        $warehouse = $this->warehouseRepository->findById($id);
+        $category = $this->warehouseBillRepository->findById($id);
         $statusCode = 200;
-        if (!$warehouse) {
+        if (!$category) {
             $statusCode = 404;
         }
         $data = [
             'statusCode' => $statusCode,
-            'categories' => $warehouse
+            'categories' => $category
         ];
         return $data;
     }
 
     public function create($request)
     {
-        $warehouse = $this->warehouseRepository->create($request);
+        $category = $this->warehouseBillRepository->create($request);
 
         $statusCode = 201;
-        if (!$warehouse)
+        if (!$category)
             $statusCode = 500;
 
         $data = [
             'statusCode' => $statusCode,
-            'categories' => $warehouse
+            'categories' => $category
         ];
 
         return $data;
@@ -57,30 +57,30 @@ class WarehouseServiceImpl implements WarehouseService
 
     public function update($request, $id)
     {
-        $oldWarehouse = $this->warehouseRepository->findById($id);
-        if (!$oldWarehouse) {
+        $oldCategory = $this->warehouseBillRepository->findById($id);
+        if (!$oldCategory) {
             $statusCode = 404;
-            $newWarehouse = null;
+            $newCategory = null;
         } else {
-            $newCategory = $this->warehouseRepository->update($request, $oldWarehouse);
+            $newCategory = $this->warehouseBillRepository->update($request, $oldCategory);
             $statusCode = 200;
         }
         $data = [
             'statusCode' => $statusCode,
-            'categories' => $newWarehouse
+            'categories' => $newCategory
         ];
         return $data;
     }
 
     public function destroy($id)
     {
-        $warehouse = $this->warehouseRepository->findById($id);
+        $category = $this->warehouseBillRepository->findById($id);
         $statusCode = 200;
-        if (!$warehouse) {
+        if (!$category) {
             $statusCode = 404;
             $message = "NOT FOUND";
         } else {
-            $this->warehouseRepository->destroy($warehouse);
+            $this->warehouseBillRepository->destroy($category);
             $message = "DELETE SUCCESS";
         }
         $data = [
