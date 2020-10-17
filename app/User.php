@@ -29,5 +29,8 @@ class User extends Model
     {
         return $this->belongsToMany(Role::class);
     }
+    public function reviews(){
+        return $this->hasMany('App\Review');
+    }
 
 }

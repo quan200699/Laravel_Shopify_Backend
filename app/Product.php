@@ -18,4 +18,13 @@ class Product extends Model
     protected $casts = [
         'createdDate' => 'datetime',
     ];
+    public function category(){
+        return $this->belongsTo('App\Category');
+    }
+    public function images(){
+        return $this->hasMany('App\Image');
+    }
+    public function reviews(){
+        return $this->hasMany('App\Review');
+    }
 }
