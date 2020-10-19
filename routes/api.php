@@ -45,3 +45,10 @@ Route::group(['prefix' => 'reviews'], function () {
     Route::put('/{id}', 'ReviewController@update')->name('review.update');
     Route::delete('/{id}', 'ReviewController@destroy')->name('review.destroy');
 });
+Route::group(['prefix' => 'order_details'], function () {
+    Route::get('/', 'OrderDetailController@index')->name('orderDetail.all');
+    Route::get('/{id}', 'OrderDetailController@show')->name('orderDetail.show');
+    Route::post('/', 'OrderDetailController@store')->name('orderDetail.store');
+    Route::put('/{id}', 'OrderDetailController@update')->name('orderDetail.update');
+    Route::delete('/{id}', 'OrderDetailController@destroy')->name('orderDetail.destroy');
+});
