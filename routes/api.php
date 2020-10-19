@@ -45,3 +45,10 @@ Route::group(['prefix' => 'reviews'], function () {
     Route::put('/{id}', 'ReviewController@update')->name('review.update');
     Route::delete('/{id}', 'ReviewController@destroy')->name('review.destroy');
 });
+Route::group(['prefix' => 'warehouse_bill_details'], function () {
+    Route::get('/', 'WarehouseBillDetailController@index')->name('warehouseBillDetail.all');
+    Route::get('/{id}', 'WarehouseBillDetailController@show')->name('warehouseBillDetail.show');
+    Route::post('/', 'WarehouseBillDetailController@store')->name('warehouseBillDetail.store');
+    Route::put('/{id}', 'WarehouseBillDetailController@update')->name('warehouseBillDetail.update');
+    Route::delete('/{id}', 'WarehouseBillDetailController@destroy')->name('warehouseBillDetail.destroy');
+});
