@@ -13,6 +13,7 @@ class ProductController extends Controller
     public function __construct(ProductService $categoryService)
     {
         $this->productService = $categoryService;
+        $this->middleware('auth.role:1', ['only' => ['store']]);
     }
 
     public function index()

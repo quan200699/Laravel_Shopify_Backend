@@ -1,10 +1,10 @@
 <?php
 
 namespace App;
+use Illuminate\Foundation\Auth\User as Authenticatable;
+use Tymon\JWTAuth\Contracts\JWTSubject;
 
-use Illuminate\Database\Eloquent\Model;
-
-class User extends Model
+class User extends Authenticatable implements JWTSubject
 {
     //
     public $timestamps = false;
@@ -33,4 +33,13 @@ class User extends Model
         return $this->hasMany('App\Review');
     }
 
+    public function getJWTIdentifier()
+    {
+        return $this->getKey();
+    }
+
+    public function getJWTCustomClaims()
+    {
+        return [];
+    }
 }
