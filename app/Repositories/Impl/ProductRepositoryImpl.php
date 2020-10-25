@@ -11,7 +11,6 @@ class ProductRepositoryImpl extends \App\Repositories\Eloquent\EloquentRepositor
 
     public function getModel()
     {
-        // TODO: Implement getModel() method.
         $model = Product::class;
         return $model;
     }
