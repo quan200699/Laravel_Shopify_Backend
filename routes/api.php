@@ -19,31 +19,33 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 Route::post('login', 'AuthController@login');
 
-Route::group(['prefix' => 'categories'], function () {
-    Route::get('/', 'CategoryController@index')->name('category.all');
-    Route::get('/{id}', 'CategoryController@show')->name('category.show');
-    Route::post('/', 'CategoryController@store')->name('category.store');
-    Route::put('/{id}', 'CategoryController@update')->name('category.update');
-    Route::delete('/{id}', 'CategoryController@destroy')->name('category.destroy');
-});
-Route::group(['prefix' => 'products'], function () {
-    Route::get('/', 'ProductController@index')->name('product.all');
-    Route::get('/{id}', 'ProductController@show')->name('product.show');
-    Route::post('/', 'ProductController@store')->name('product.store');
-    Route::put('/{id}', 'ProductController@update')->name('product.update');
-    Route::delete('/{id}', 'ProductController@destroy')->name('product.destroy');
-});
-Route::group(['prefix' => 'images'], function () {
-    Route::get('/', 'ImageController@index')->name('image.all');
-    Route::get('/{id}', 'ImageController@show')->name('image.show');
-    Route::post('/', 'ImageController@store')->name('image.store');
-    Route::put('/{id}', 'ImageController@update')->name('image.update');
-    Route::delete('/{id}', 'ImageController@destroy')->name('image.destroy');
-});
-Route::group(['prefix' => 'reviews'], function () {
-    Route::get('/', 'ReviewController@index')->name('review.all');
-    Route::get('/{id}', 'ReviewController@show')->name('review.show');
-    Route::post('/', 'ReviewController@store')->name('review.store');
-    Route::put('/{id}', 'ReviewController@update')->name('review.update');
-    Route::delete('/{id}', 'ReviewController@destroy')->name('review.destroy');
+Route::group(['middleware' => 'auth.jwt'], function () {
+    Route::group(['prefix' => 'categories'], function () {
+        Route::get('/', 'CategoryController@index')->name('category.all');
+        Route::get('/{id}', 'CategoryController@show')->name('category.show');
+        Route::post('/', 'CategoryController@store')->name('category.store');
+        Route::put('/{id}', 'CategoryController@update')->name('category.update');
+        Route::delete('/{id}', 'CategoryController@destroy')->name('category.destroy');
+    });
+    Route::group(['prefix' => 'products'], function () {
+        Route::get('/', 'ProductController@index')->name('product.all');
+        Route::get('/{id}', 'ProductController@show')->name('product.show');
+        Route::post('/', 'ProductController@store')->name('product.store');
+        Route::put('/{id}', 'ProductController@update')->name('product.update');
+        Route::delete('/{id}', 'ProductController@destroy')->name('product.destroy');
+    });
+    Route::group(['prefix' => 'images'], function () {
+        Route::get('/', 'ImageController@index')->name('image.all');
+        Route::get('/{id}', 'ImageController@show')->name('image.show');
+        Route::post('/', 'ImageController@store')->name('image.store');
+        Route::put('/{id}', 'ImageController@update')->name('image.update');
+        Route::delete('/{id}', 'ImageController@destroy')->name('image.destroy');
+    });
+    Route::group(['prefix' => 'reviews'], function () {
+        Route::get('/', 'ReviewController@index')->name('review.all');
+        Route::get('/{id}', 'ReviewController@show')->name('review.show');
+        Route::post('/', 'ReviewController@store')->name('review.store');
+        Route::put('/{id}', 'ReviewController@update')->name('review.update');
+        Route::delete('/{id}', 'ReviewController@destroy')->name('review.destroy');
+    });
 });

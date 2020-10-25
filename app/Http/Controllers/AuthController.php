@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Role;
 use App\Services\UserService;
 use Tymon\JWTAuth\Facades\JWTAuth;
 use Illuminate\Http\Request;
@@ -28,11 +29,15 @@ class AuthController extends Controller
             ], 401);
         }
         $user = $this->userService->findByEmail($request->only('email'));
-
+        $roles = array();
+        foreach ($user->roles as $role) {
+            array_push($roles, $role);
+        }
         return response()->json([
-            'status' => true,
-            'AccessToken' => $token,
-            'user' => $user
+            'accessToken' => $token,
+            'email' => $user->email,
+            'fullName' => $user->fullName,
+            'roles' => $roles
         ], 200);
     }
 
