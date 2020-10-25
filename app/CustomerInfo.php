@@ -8,6 +8,7 @@ class CustomerInfo extends Model
 {
     //
     public $timestamps = false;
+    protected $fillable = ['name'];
 
     public function user()
     {
