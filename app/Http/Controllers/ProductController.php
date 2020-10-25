@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Services\ImageService;
 use App\Services\ProductService;
 use Illuminate\Http\Request;
 
@@ -9,10 +10,12 @@ class ProductController extends Controller
 {
     //
     protected $productService;
+    protected $imageService;
 
-    public function __construct(ProductService $productService)
+    public function __construct(ProductService $productService, ImageService $imageService)
     {
         $this->productService = $productService;
+        $this->imageService = $imageService;
     }
 
     public function index()
@@ -45,5 +48,11 @@ class ProductController extends Controller
     {
         $product = $this->productService->destroy($id);
         return response()->json($product['message'], $product['statusCode']);
+    }
+
+    public function getAllImage($id)
+    {
+        $images = $this->imageService->findAllByProduct($id);
+        return response()->json($images['images'], $images['statusCode']);
     }
 }

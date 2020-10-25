@@ -30,6 +30,7 @@ Route::group(['middleware' => 'auth.jwt'], function () {
     Route::group(['prefix' => 'products'], function () {
         Route::get('/', 'ProductController@index')->name('product.all');
         Route::get('/{id}', 'ProductController@show')->name('product.show');
+        Route::get('/{id}/images', 'ProductController@getAllImage')->name('product.getAllImage');
         Route::post('/', 'ProductController@store')->name('product.store');
         Route::put('/{id}', 'ProductController@update')->name('product.update');
         Route::delete('/{id}', 'ProductController@destroy')->name('product.destroy');
