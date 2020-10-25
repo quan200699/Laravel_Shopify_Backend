@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Services\UserService;
 use Tymon\JWTAuth\Facades\JWTAuth;
 use Illuminate\Http\Request;
 use Tymon\JWTAuth\Exceptions\JWTException;
@@ -9,6 +10,13 @@ use Tymon\JWTAuth\Exceptions\JWTException;
 class AuthController extends Controller
 {
     //
+    protected $userService;
+
+    public function __construct(UserService $userService)
+    {
+        $this->userService = $userService;
+    }
+
     public function login(Request $request)
     {
         $input = $request->only('email', 'password');
@@ -19,10 +27,12 @@ class AuthController extends Controller
                 'message' => 'Invalid Email or Password',
             ], 401);
         }
+        $user = $this->userService->findByEmail($request->only('email'));
 
         return response()->json([
             'status' => true,
             'AccessToken' => $token,
+            'user' => $user
         ], 200);
     }
 

@@ -10,10 +10,9 @@ class ProductController extends Controller
     //
     protected $productService;
 
-    public function __construct(ProductService $categoryService)
+    public function __construct(ProductService $productService)
     {
-        $this->productService = $categoryService;
-        $this->middleware('auth.role:1', ['only' => ['store']]);
+        $this->productService = $productService;
     }
 
     public function index()

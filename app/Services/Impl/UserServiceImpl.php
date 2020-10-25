@@ -86,4 +86,10 @@ class UserServiceImpl implements UserService
         ];
         return $data;
     }
+
+    function findByEmail($email)
+    {
+        $user = $this->userRepository->findByEmail($email);
+        return $user;
+    }
 }

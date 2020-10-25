@@ -56,5 +56,4 @@ abstract class EloquentRepository implements Repository
         $object->delete();
     }
 
-
 }

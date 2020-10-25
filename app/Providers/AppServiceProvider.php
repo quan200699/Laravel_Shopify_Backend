@@ -8,16 +8,20 @@ use App\Repositories\Impl\CategoryRepositoryImpl;
 use App\Repositories\Impl\ImageRepositoryImpl;
 use App\Repositories\Impl\ProductRepositoryImpl;
 use App\Repositories\Impl\ReviewRepositoryImpl;
+use App\Repositories\Impl\UserRepositoryImpl;
 use App\Repositories\ProductRepository;
 use App\Repositories\ReviewRepository;
+use App\Repositories\UserRepository;
 use App\Services\CategoryService;
 use App\Services\ImageService;
 use App\Services\Impl\CategoryServiceImpl;
 use App\Services\Impl\ImageServiceImpl;
 use App\Services\Impl\ProductServiceImpl;
 use App\Services\Impl\ReviewServiceImpl;
+use App\Services\Impl\UserServiceImpl;
 use App\Services\ProductService;
 use App\Services\ReviewService;
+use App\Services\UserService;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -61,6 +65,14 @@ class AppServiceProvider extends ServiceProvider
         $this->app->singleton(
             ReviewService::class,
             ReviewServiceImpl::class
+        );
+        $this->app->singleton(
+            UserRepository::class,
+            UserRepositoryImpl::class
+        );
+        $this->app->singleton(
+            UserService::class,
+            UserServiceImpl::class
         );
     }
 
