@@ -24,21 +24,21 @@ class ProductController extends Controller
     public function show($id)
     {
         $product = $this->productService->findById($id);
-        return response()->json($product['$products'], $product['statusCode']);
+        return response()->json($product['products'], $product['statusCode']);
     }
 
     public function store(Request $request)
     {
         $dataProduct = $this->productService->create($request->all());
 
-        return response()->json($dataProduct['$products'], $dataProduct['statusCode']);
+        return response()->json($dataProduct['products'], $dataProduct['statusCode']);
     }
 
     public function update(Request $request, $id)
     {
         $dataProduct = $this->productService->update($request->all(), $id);
 
-        return response()->json($dataProduct['$products'], $dataProduct['statusCode']);
+        return response()->json($dataProduct['products'], $dataProduct['statusCode']);
     }
 
     public function destroy($id)
