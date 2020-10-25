@@ -86,4 +86,18 @@ class ImageServiceImpl implements ImageService
         ];
         return $data;
     }
+
+    public function findAllByProduct($productId)
+    {
+        $images = $this->imageRepository->findAllByProduct($productId);
+        $statusCode = 200;
+        if (!$images) {
+            $statusCode = 404;
+        }
+        $data = [
+            'statusCode' => $statusCode,
+            'images' => $images
+        ];
+        return $data;
+    }
 }
