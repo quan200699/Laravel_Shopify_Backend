@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Notification;
 use App\Services\NotificationService;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class NotificationController extends Controller
@@ -29,8 +31,12 @@ class NotificationController extends Controller
 
     public function store(Request $request)
     {
-        $dataNotification = $this->notificationService->create($request->all());
-
+        $notification = new Notification();
+        $notification->message = $request->message;
+        $notification->create_date = Carbon::now();
+        $notification->status = $request->status;
+        $notification->user_id = $request->user_id;
+        $dataNotification = $this->notificationService->create($notification);
         return response()->json($dataNotification['notifications'], $dataNotification['statusCode']);
     }
 

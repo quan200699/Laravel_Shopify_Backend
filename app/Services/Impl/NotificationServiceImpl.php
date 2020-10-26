@@ -12,7 +12,7 @@ class NotificationServiceImpl implements NotificationService
 
     protected $notificationRepository;
 
-    public function __construct(NotificationRepository  $notificationRepository)
+    public function __construct(NotificationRepository $notificationRepository)
     {
         $this->notificationRepository = $notificationRepository;
     }
@@ -38,7 +38,8 @@ class NotificationServiceImpl implements NotificationService
 
     public function create($request)
     {
-        $notifications = $this->notificationRepository->create($request);
+
+        $notifications = $request->save();
 
         $statusCode = 201;
         if (!$notifications)
@@ -46,7 +47,7 @@ class NotificationServiceImpl implements NotificationService
 
         $data = [
             'statusCode' => $statusCode,
-            'notifications' => $notifications
+            'notifications' => $request
         ];
 
         return $data;
