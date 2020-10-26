@@ -11,12 +11,14 @@ use App\Repositories\Impl\ImageRepositoryImpl;
 use App\Repositories\Impl\NotificationRepositoryImpl;
 use App\Repositories\Impl\ProductRepositoryImpl;
 use App\Repositories\Impl\ReviewRepositoryImpl;
+use App\Repositories\Impl\ShoppingCartRepositoryImpl;
 use App\Repositories\Impl\UserRepositoryImpl;
 use App\Repositories\Impl\WarehouseBillRepositoryImpl;
 use App\Repositories\Impl\WarehouseRepositoryImpl;
 use App\Repositories\NotificationRepository;
 use App\Repositories\ProductRepository;
 use App\Repositories\ReviewRepository;
+use App\Repositories\ShoppingCartRepository;
 use App\Repositories\UserRepository;
 use App\Repositories\WarehouseBillRepository;
 use App\Repositories\WarehouseRepository;
@@ -29,12 +31,14 @@ use App\Services\Impl\ImageServiceImpl;
 use App\Services\Impl\NotificationServiceImpl;
 use App\Services\Impl\ProductServiceImpl;
 use App\Services\Impl\ReviewServiceImpl;
+use App\Services\Impl\ShoppingCartServiceImpl;
 use App\Services\Impl\UserServiceImpl;
 use App\Services\Impl\WarehouseBillServiceImpl;
 use App\Services\Impl\WarehouseServiceImpl;
 use App\Services\NotificationService;
 use App\Services\ProductService;
 use App\Services\ReviewService;
+use App\Services\ShoppingCartService;
 use App\Services\UserService;
 use App\Services\WarehouseBillService;
 use App\Services\WarehouseService;
@@ -121,6 +125,14 @@ class AppServiceProvider extends ServiceProvider
         $this->app->singleton(
             NotificationService::class,
             NotificationServiceImpl::class
+        );
+        $this->app->singleton(
+            ShoppingCartRepository::class,
+            ShoppingCartRepositoryImpl::class
+        );
+        $this->app->singleton(
+            ShoppingCartService::class,
+            ShoppingCartServiceImpl::class
         );
     }
 
