@@ -14,4 +14,10 @@ class ProductRepositoryImpl extends \App\Repositories\Eloquent\EloquentRepositor
         $model = Product::class;
         return $model;
     }
+
+    public function findAllByCategory($categoryId)
+    {
+        $result = $this->model->where('category_id', $categoryId)->get();
+        return $result;
+    }
 }

@@ -85,4 +85,18 @@ class ProductServiceImpl implements ProductService
         ];
         return $data;
     }
+
+    public function findAllByCategory($categoryId)
+    {
+        $products = $this->productRepository->findAllByCategory($categoryId);
+        $statusCode = 200;
+        if (!$products) {
+            $statusCode = 404;
+        }
+        $data = [
+            'statusCode' => $statusCode,
+            'products' => $products
+        ];
+        return $data;
+    }
 }

@@ -3,16 +3,19 @@
 namespace App\Http\Controllers;
 
 use App\Services\CategoryService;
+use App\Services\ProductService;
 use Illuminate\Http\Request;
 
 class CategoryController extends Controller
 {
     //
     protected $categoryService;
+    protected $productService;
 
-    public function __construct(CategoryService $categoryService)
+    public function __construct(CategoryService $categoryService, ProductService $productService)
     {
         $this->categoryService = $categoryService;
+        $this->productService = $productService;
     }
 
     public function index()
@@ -45,5 +48,11 @@ class CategoryController extends Controller
     {
         $category = $this->categoryService->destroy($id);
         return response()->json($category['message'], $category['statusCode']);
+    }
+
+    public function findAllProductByCategory($id)
+    {
+        $products = $this->productService->findAllByCategory($id);
+        return response()->json($products['products'], $products['statusCode']);
     }
 }

@@ -24,6 +24,7 @@ Route::group(['middleware' => 'auth.jwt'], function () {
     Route::group(['prefix' => 'categories'], function () {
         Route::get('/', 'CategoryController@index')->name('category.all');
         Route::get('/{id}', 'CategoryController@show')->name('category.show');
+        Route::get('/{id}/products', 'CategoryController@findAllProductByCategory')->name('category.findAllProductByCategory');
         Route::post('/', 'CategoryController@store')->name('category.store');
         Route::put('/{id}', 'CategoryController@update')->name('category.update');
         Route::delete('/{id}', 'CategoryController@destroy')->name('category.destroy');
