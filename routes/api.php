@@ -85,4 +85,7 @@ Route::group(['middleware' => 'auth.jwt'], function () {
         Route::put('/{id}', 'ShoppingCartController@update')->name('carts.update');
         Route::delete('/{id}', 'ShoppingCartController@destroy')->name('carts.destroy');
     });
+    Route::group(['prefix' => 'users'], function () {
+        Route::get('/{id}/notifications', 'UserController@getAllNotificationByUser')->name('users.getAllNotificationByUser');
+    });
 });

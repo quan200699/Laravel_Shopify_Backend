@@ -86,4 +86,18 @@ class NotificationServiceImpl implements NotificationService
         ];
         return $data;
     }
+
+    public function findAllByStatusIsFalseAndUser($user_id)
+    {
+        $notifications = $this->notificationRepository->findAllByStatusIsFalseAndUser($user_id);
+        $statusCode = 200;
+        if (!$notifications) {
+            $statusCode = 404;
+        }
+        $data = [
+            'statusCode' => $statusCode,
+            'notifications' => $notifications
+        ];
+        return $data;
+    }
 }
