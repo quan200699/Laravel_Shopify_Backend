@@ -17,7 +17,7 @@ class ImageRepositoryImpl extends \App\Repositories\Eloquent\EloquentRepository 
 
     public function findAllByProduct($productId)
     {
-        $result = $this->model->where('product_id', $productId)->first();
+        $result = $this->model->where('product_id', $productId)->get();
         return $result;
     }
 }
