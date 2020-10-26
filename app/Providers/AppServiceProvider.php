@@ -32,6 +32,7 @@ use App\Services\Impl\ReviewServiceImpl;
 use App\Services\Impl\UserServiceImpl;
 use App\Services\Impl\WarehouseBillServiceImpl;
 use App\Services\Impl\WarehouseServiceImpl;
+use App\Services\NotificationService;
 use App\Services\ProductService;
 use App\Services\ReviewService;
 use App\Services\UserService;
