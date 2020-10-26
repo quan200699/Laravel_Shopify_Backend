@@ -3,49 +3,50 @@
 
 namespace App\Services\Impl;
 
-use App\Repositories\CategoryRepository;
-use App\Services\CategoryService;
 
-class CategoryServiceImpl implements CategoryService
+use App\Repositories\ItemRepository;
+use App\Services\Service;
+
+class ItemServiceImpl implements Service
 {
-    protected $categoryRepository;
+    protected $itemRepository;
 
-    public function __construct(CategoryRepository $categoryRepository)
+    public function __construct(ItemRepository $itemRepository)
     {
-        $this->categoryRepository = $categoryRepository;
+        $this->itemRepository = $itemRepository;
     }
 
 
     public function getAll()
     {
-        return $this->categoryRepository->getAll();
+        return $this->itemRepository->getAll();
     }
 
     public function findById($id)
     {
-        $category = $this->categoryRepository->findById($id);
+        $items = $this->itemRepository->findById($id);
         $statusCode = 200;
-        if (!$category) {
+        if (!$items) {
             $statusCode = 404;
         }
         $data = [
             'statusCode' => $statusCode,
-            'categories' => $category
+            'items' => $items
         ];
         return $data;
     }
 
     public function create($request)
     {
-        $category = $this->categoryRepository->create($request);
+        $items = $this->itemRepository->create($request);
 
         $statusCode = 201;
-        if (!$category)
+        if (!$items)
             $statusCode = 500;
 
         $data = [
             'statusCode' => $statusCode,
-            'categories' => $category
+            'items' => $items
         ];
 
         return $data;
@@ -53,30 +54,30 @@ class CategoryServiceImpl implements CategoryService
 
     public function update($request, $id)
     {
-        $oldCategory = $this->categoryRepository->findById($id);
-        if (!$oldCategory) {
+        $oldItem = $this->itemRepository->findById($id);
+        if (!$oldItem) {
             $statusCode = 404;
-            $newCategory = null;
+            $newItem = null;
         } else {
-            $newCategory = $this->categoryRepository->update($request, $oldCategory);
+            $newItem = $this->itemRepository->update($request, $oldItem);
             $statusCode = 200;
         }
         $data = [
             'statusCode' => $statusCode,
-            'categories' => $newCategory
+            'items' => $newItem
         ];
         return $data;
     }
 
     public function destroy($id)
     {
-        $category = $this->categoryRepository->findById($id);
+        $items = $this->itemRepository->findById($id);
         $statusCode = 200;
-        if (!$category) {
+        if (!$items) {
             $statusCode = 404;
             $message = "NOT FOUND";
         } else {
-            $this->categoryRepository->destroy($category);
+            $this->itemRepository->destroy($items);
             $message = "DELETE SUCCESS";
         }
         $data = [
