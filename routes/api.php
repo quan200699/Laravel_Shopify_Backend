@@ -70,4 +70,11 @@ Route::group(['middleware' => 'auth.jwt'], function () {
         Route::put('/{id}', 'CustomerInfoController@update')->name('customerInfo.update');
         Route::delete('/{id}', 'CustomerInfoController@destroy')->name('customerInfo.destroy');
     });
+    Route::group(['prefix' => 'notifications'], function () {
+        Route::get('/', 'NotificationController@index')->name('notification.all');
+        Route::get('/{id}', 'NotificationController@show')->name('notification.show');
+        Route::post('/', 'NotificationController@store')->name('notification.store');
+        Route::put('/{id}', 'NotificationController@update')->name('notification.update');
+        Route::delete('/{id}', 'NotificationController@destroy')->name('notification.destroy');
+    });
 });

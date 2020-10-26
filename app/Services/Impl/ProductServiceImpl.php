@@ -5,12 +5,13 @@ namespace App\Services\Impl;
 
 
 use App\Repositories\ProductRepository;
+use App\Services\ProductService;
 
-class ProductServiceImpl implements \App\Services\ProductService
+class ProductServiceImpl implements ProductService
 {
     protected $productRepository;
 
-    public function __construct(ProductRepository  $productRepository)
+    public function __construct(ProductRepository $productRepository)
     {
         $this->productRepository = $productRepository;
     }
