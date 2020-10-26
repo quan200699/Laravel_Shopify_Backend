@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Services\UserService;
+use App\ShoppingCart;
 use App\User;
 use Illuminate\Http\Request;
 use Tymon\JWTAuth\Exceptions\JWTException;
@@ -69,7 +70,9 @@ class AuthController extends Controller
         $user->email = $request->email;
         $user->fullName = $request->fullName;
         $dataUser = $this->userService->create($user);
-
+        $cart = new ShoppingCart();
+        $cart->user_id = $dataUser['users']->id;
+        $cart->save();
         return response()->json($dataUser['users'], $dataUser['statusCode']);
     }
 }

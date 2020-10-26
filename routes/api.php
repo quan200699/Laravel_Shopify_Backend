@@ -92,4 +92,8 @@ Route::group(['middleware' => 'auth.jwt'], function () {
         Route::put('/{id}', 'ItemController@update')->name('items.update');
         Route::delete('/{id}', 'ItemController@destroy')->name('items.destroy');
     });
+    Route::group(['prefix' => 'users'], function () {
+        Route::get('/{id}/notifications', 'UserController@getAllNotificationByUser')->name('users.getAllNotificationByUser');
+        Route::get('/{id}/notifications-desc', 'UserController@getAllNotificationByUserAndDateDesc')->name('users.getAllNotificationByUserAndDateDesc');
+    });
 });
