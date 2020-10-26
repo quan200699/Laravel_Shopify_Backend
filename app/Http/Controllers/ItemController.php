@@ -8,7 +8,6 @@ use Illuminate\Http\Request;
 class ItemController extends Controller
 {
     //
-
     protected $itemService;
 
     public function __construct(ItemService $itemService)

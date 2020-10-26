@@ -5,9 +5,9 @@ namespace App\Services\Impl;
 
 
 use App\Repositories\ItemRepository;
-use App\Services\Service;
+use App\Services\ItemService;
 
-class ItemServiceImpl implements Service
+class ItemServiceImpl implements ItemService
 {
     protected $itemRepository;
 
