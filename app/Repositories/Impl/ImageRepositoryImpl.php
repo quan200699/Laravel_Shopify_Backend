@@ -5,8 +5,10 @@ namespace App\Repositories\Impl;
 
 
 use App\Image;
+use App\Repositories\Eloquent\EloquentRepository;
+use App\Repositories\ImageRepository;
 
-class ImageRepositoryImpl extends \App\Repositories\Eloquent\EloquentRepository implements \App\Repositories\ImageRepository
+class ImageRepositoryImpl extends EloquentRepository implements ImageRepository
 {
 
     public function getModel()
