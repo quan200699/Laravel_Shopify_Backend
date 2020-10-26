@@ -101,4 +101,18 @@ class NotificationServiceImpl implements NotificationService
         ];
         return $data;
     }
+
+    public function findAllByUserAndDateDesc($user_id)
+    {
+        $notifications = $this->notificationRepository->findAllByUserAndDateDesc($user_id);
+        $statusCode = 200;
+        if (!$notifications) {
+            $statusCode = 404;
+        }
+        $data = [
+            'statusCode' => $statusCode,
+            'notifications' => $notifications
+        ];
+        return $data;
+    }
 }

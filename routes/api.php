@@ -87,5 +87,6 @@ Route::group(['middleware' => 'auth.jwt'], function () {
     });
     Route::group(['prefix' => 'users'], function () {
         Route::get('/{id}/notifications', 'UserController@getAllNotificationByUser')->name('users.getAllNotificationByUser');
+        Route::get('/{id}/notifications-desc', 'UserController@getAllNotificationByUserAndDateDesc')->name('users.getAllNotificationByUserAndDateDesc');
     });
 });

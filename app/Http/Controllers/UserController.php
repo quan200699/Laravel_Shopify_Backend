@@ -22,4 +22,10 @@ class UserController extends Controller
         $notifications = $this->notificationService->findAllByStatusIsFalseAndUser($id);
         return response()->json($notifications['notifications'], $notifications['statusCode']);
     }
+
+    public function getAllNotificationByUserAndDateDesc($id)
+    {
+        $notifications = $this->notificationService->findAllByUserAndDateDesc($id);
+        return response()->json($notifications['notifications'], $notifications['statusCode']);
+    }
 }

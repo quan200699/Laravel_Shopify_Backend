@@ -19,10 +19,18 @@ class NotificationRepositoryImpl extends EloquentRepository implements Notificat
 
     public function findAllByStatusIsFalseAndUser($user_id)
     {
-        $result = $this->model->where('user_id' , $user_id)
-            ->where(function($q) {
+        $result = $this->model->where('user_id', $user_id)
+            ->where(function ($q) {
                 $q->where('status', 0);
             })
+            ->get();;
+        return $result;
+    }
+
+    public function findAllByUserAndDateDesc($user_id)
+    {
+        $result = $this->model->where('user_id', $user_id)
+            ->orderBy('create_date', 'desc')
             ->get();;
         return $result;
     }
