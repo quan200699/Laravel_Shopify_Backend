@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Role;
 use App\Services\UserService;
-use Tymon\JWTAuth\Facades\JWTAuth;
+use App\User;
 use Illuminate\Http\Request;
 use Tymon\JWTAuth\Exceptions\JWTException;
+use Tymon\JWTAuth\Facades\JWTAuth;
 
 class AuthController extends Controller
 {
@@ -60,5 +60,16 @@ class AuthController extends Controller
                 'message' => 'Sorry, the user cannot be logged out'
             ], 500);
         }
+    }
+
+    public function register(Request $request)
+    {
+        $user = new User();
+        $user->password = bcrypt($request->password);
+        $user->email = $request->email;
+        $user->fullName = $request->fullName;
+        $dataUser = $this->userService->create($user);
+
+        return response()->json($dataUser['users'], $dataUser['statusCode']);
     }
 }

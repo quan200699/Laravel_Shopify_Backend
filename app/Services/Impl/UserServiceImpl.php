@@ -38,15 +38,15 @@ class UserServiceImpl implements UserService
 
     public function create($request)
     {
-        $user = $this->userRepository->create($request);
+        $result = $request->save();
 
         $statusCode = 201;
-        if (!$user)
+        if (!$result)
             $statusCode = 500;
 
         $data = [
             'statusCode' => $statusCode,
-            'users' => $user
+            'users' => $request
         ];
 
         return $data;
