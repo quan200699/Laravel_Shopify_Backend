@@ -3,8 +3,10 @@
 namespace App\Providers;
 
 use App\Repositories\CategoryRepository;
+use App\Repositories\CustomerInfoRepository;
 use App\Repositories\ImageRepository;
 use App\Repositories\Impl\CategoryRepositoryImpl;
+use App\Repositories\Impl\CustomerInfoRepositoryImpl;
 use App\Repositories\Impl\ImageRepositoryImpl;
 use App\Repositories\Impl\ProductRepositoryImpl;
 use App\Repositories\Impl\ReviewRepositoryImpl;
@@ -17,8 +19,10 @@ use App\Repositories\UserRepository;
 use App\Repositories\WarehouseBillRepository;
 use App\Repositories\WarehouseRepository;
 use App\Services\CategoryService;
+use App\Services\CustomerInfoService;
 use App\Services\ImageService;
 use App\Services\Impl\CategoryServiceImpl;
+use App\Services\Impl\CustomerInfoServiceImpl;
 use App\Services\Impl\ImageServiceImpl;
 use App\Services\Impl\ProductServiceImpl;
 use App\Services\Impl\ReviewServiceImpl;
@@ -97,6 +101,14 @@ class AppServiceProvider extends ServiceProvider
         $this->app->singleton(
             WarehouseBillService::class,
             WarehouseBillServiceImpl::class
+        );
+        $this->app->singleton(
+            CustomerInfoRepository::class,
+            CustomerInfoRepositoryImpl::class
+        );
+        $this->app->singleton(
+            CustomerInfoService::class,
+            CustomerInfoServiceImpl::class
         );
     }
 

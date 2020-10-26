@@ -63,4 +63,11 @@ Route::group(['middleware' => 'auth.jwt'], function () {
         Route::put('/{id}', 'WarehouseBillController@update')->name('warehouseBill.update');
         Route::delete('/{id}', 'WarehouseBillController@destroy')->name('warehouseBill.destroy');
     });
+    Route::group(['prefix' => 'customer-infos'], function () {
+        Route::get('/', 'CustomerInfoController@index')->name('customerInfo.all');
+        Route::get('/{id}', 'CustomerInfoController@show')->name('customerInfo.show');
+        Route::post('/', 'CustomerInfoController@store')->name('customerInfo.store');
+        Route::put('/{id}', 'CustomerInfoController@update')->name('customerInfo.update');
+        Route::delete('/{id}', 'CustomerInfoController@destroy')->name('customerInfo.destroy');
+    });
 });
