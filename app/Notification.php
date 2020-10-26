@@ -8,4 +8,5 @@ class Notification extends Model
 {
     //
     public $timestamps = false;
+    protected $fillable = ['message'];
 }

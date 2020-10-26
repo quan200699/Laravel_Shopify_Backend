@@ -15,8 +15,9 @@ class CreateWarehouseBillTable extends Migration
     {
         Schema::create('warehouse_bills', function (Blueprint $table) {
             $table->increments('id');
-            $table->dateTime('create_date');
-            $table->integer('warehouse_id');
+            $table->dateTime('create_date')->nullable();
+             $table->unsignedInteger('warehouse_id')->nullable();
+            $table->foreign('warehouse_id')->references('id')->on('warehouses');;
         });
     }
 
