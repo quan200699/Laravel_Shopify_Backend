@@ -85,4 +85,11 @@ Route::group(['middleware' => 'auth.jwt'], function () {
         Route::put('/{id}', 'ShoppingCartController@update')->name('carts.update');
         Route::delete('/{id}', 'ShoppingCartController@destroy')->name('carts.destroy');
     });
+    Route::group(['prefix' => 'items'], function () {
+        Route::get('/', 'ItemController@index')->name('items.all');
+        Route::get('/{id}', 'ItemController@show')->name('items.show');
+        Route::post('/', 'ItemController@store')->name('items.store');
+        Route::put('/{id}', 'ItemController@update')->name('items.update');
+        Route::delete('/{id}', 'ItemController@destroy')->name('items.destroy');
+    });
 });
