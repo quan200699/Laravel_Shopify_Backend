@@ -99,4 +99,18 @@ class ProductServiceImpl implements ProductService
         ];
         return $data;
     }
+
+    public function findAllBySaleOffGreaterThanZero()
+    {
+        $products = $this->productRepository->findAllBySaleOffGreaterThanZero();
+        $statusCode = 200;
+        if (!$products) {
+            $statusCode = 404;
+        }
+        $data = [
+            'statusCode' => $statusCode,
+            'products' => $products
+        ];
+        return $data;
+    }
 }

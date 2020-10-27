@@ -55,4 +55,10 @@ class ProductController extends Controller
         $images = $this->imageService->findAllByProduct($id);
         return response()->json($images['images'], $images['statusCode']);
     }
+
+    public function getAllProductWithSaleOffGreaterThan()
+    {
+        $products = $this->productService->findAllBySaleOffGreaterThanZero();
+        return response()->json($products['products'], $products['statusCode']);
+    }
 }
