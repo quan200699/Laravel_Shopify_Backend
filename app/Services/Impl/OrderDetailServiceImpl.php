@@ -10,10 +10,6 @@ class OrderDetailServiceImpl implements OrderDetailService
 {
     protected $orderDetailRepository;
 
-    /**
-     * CustomerServiceImpl constructor.
-     * @param $categoryRepository
-     */
     public function __construct(OrderDetailRepository $orderDetailRepository)
     {
         $this->orderDetailRepository = $orderDetailRepository;
@@ -34,7 +30,7 @@ class OrderDetailServiceImpl implements OrderDetailService
         }
         $data = [
             'statusCode' => $statusCode,
-            'categories' => $orderDetail
+            'orderDetails' => $orderDetail
         ];
         return $data;
     }
@@ -49,7 +45,7 @@ class OrderDetailServiceImpl implements OrderDetailService
 
         $data = [
             'statusCode' => $statusCode,
-            'categories' => $orderDetail
+            'orderDetails' => $orderDetail
         ];
 
         return $data;
@@ -60,14 +56,14 @@ class OrderDetailServiceImpl implements OrderDetailService
         $oldOrderDetail = $this->orderDetailRepository->findById($id);
         if (!$oldOrderDetail) {
             $statusCode = 404;
-            $newCategory = null;
+            $newOrderDetail = null;
         } else {
-            $newCategory = $this->orderDetailRepository->update($request, $oldOrderDetail);
+            $newOrderDetail = $this->orderDetailRepository->update($request, $oldOrderDetail);
             $statusCode = 200;
         }
         $data = [
             'statusCode' => $statusCode,
-            'categories' => $newCategory
+            'orderDetails' => $newOrderDetail
         ];
         return $data;
     }
