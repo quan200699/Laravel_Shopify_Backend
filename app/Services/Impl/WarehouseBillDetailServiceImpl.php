@@ -5,12 +5,13 @@ namespace App\Services\Impl;
 
 
 use App\Repositories\WarehouseBillDetailRepository;
+use App\Services\WarehouseBillDetailService;
 
-class WarehouseBillDetailServiceImpl implements \App\Services\WarehouseBillDetailService
+class WarehouseBillDetailServiceImpl implements WarehouseBillDetailService
 {
     protected $warehouseBillDetailRepository;
 
-    public function __construct(WarehouseBillDetailRepository  $warehouseBillDetailRepository)
+    public function __construct(WarehouseBillDetailRepository $warehouseBillDetailRepository)
     {
         $this->warehouseBillDetailRepository = $warehouseBillDetailRepository;
     }
@@ -29,7 +30,7 @@ class WarehouseBillDetailServiceImpl implements \App\Services\WarehouseBillDetai
         }
         $data = [
             'statusCode' => $statusCode,
-            'products' => $wareHouseBillDetail
+            'wareHouseBillDetails' => $wareHouseBillDetail
         ];
         return $data;
     }
@@ -44,7 +45,7 @@ class WarehouseBillDetailServiceImpl implements \App\Services\WarehouseBillDetai
 
         $data = [
             'statusCode' => $statusCode,
-            'products' => $product
+            'wareHouseBillDetails' => $wareHouseBillDetail
         ];
 
         return $data;
@@ -55,14 +56,14 @@ class WarehouseBillDetailServiceImpl implements \App\Services\WarehouseBillDetai
         $oldWareHouseBillDetail = $this->warehouseBillDetailRepository->findById($id);
         if (!$oldWareHouseBillDetail) {
             $statusCode = 404;
-            $newProduct = null;
+            $newWareHouseBillDetails = null;
         } else {
-            $newProduct = $this->warehouseBillDetailRepository->update($request, $oldWareHouseBillDetail);
+            $newWareHouseBillDetails = $this->warehouseBillDetailRepository->update($request, $oldWareHouseBillDetail);
             $statusCode = 200;
         }
         $data = [
             'statusCode' => $statusCode,
-            'products' => $newProduct
+            'wareHouseBillDetails' => $newWareHouseBillDetails
         ];
         return $data;
     }

@@ -4,9 +4,11 @@
 namespace App\Repositories\Impl;
 
 
+use App\Repositories\Eloquent\EloquentRepository;
+use App\Repositories\WarehouseBillDetailRepository;
 use App\WarehouseBillDetail;
 
-class WarehouseBillDetailRepositoryImpl extends \App\Repositories\Eloquent\EloquentRepository implements \App\Repositories\WarehouseBillDetailRepository
+class WarehouseBillDetailRepositoryImpl extends EloquentRepository implements WarehouseBillDetailRepository
 {
 
     public function getModel()

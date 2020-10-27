@@ -104,11 +104,11 @@ Route::group(['middleware' => 'auth.jwt'], function () {
         Route::get('/{id}/notifications', 'UserController@getAllNotificationByUser')->name('users.getAllNotificationByUser');
         Route::get('/{id}/notifications-desc', 'UserController@getAllNotificationByUserAndDateDesc')->name('users.getAllNotificationByUserAndDateDesc');
     });
-});
-Route::group(['prefix' => 'warehouse_bill_details'], function () {
-    Route::get('/', 'WarehouseBillDetailController@index')->name('warehouseBillDetail.all');
-    Route::get('/{id}', 'WarehouseBillDetailController@show')->name('warehouseBillDetail.show');
-    Route::post('/', 'WarehouseBillDetailController@store')->name('warehouseBillDetail.store');
-    Route::put('/{id}', 'WarehouseBillDetailController@update')->name('warehouseBillDetail.update');
-    Route::delete('/{id}', 'WarehouseBillDetailController@destroy')->name('warehouseBillDetail.destroy');
+    Route::group(['prefix' => 'warehouse-bill-details'], function () {
+        Route::get('/', 'WarehouseBillDetailController@index')->name('warehouseBillDetail.all');
+        Route::get('/{id}', 'WarehouseBillDetailController@show')->name('warehouseBillDetail.show');
+        Route::post('/', 'WarehouseBillDetailController@store')->name('warehouseBillDetail.store');
+        Route::put('/{id}', 'WarehouseBillDetailController@update')->name('warehouseBillDetail.update');
+        Route::delete('/{id}', 'WarehouseBillDetailController@destroy')->name('warehouseBillDetail.destroy');
+    });
 });

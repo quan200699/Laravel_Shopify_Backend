@@ -15,10 +15,11 @@ class CreateWarehouseBillDetails extends Migration
     {
         Schema::create('warehouse_bill_details', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('amount');
-            $table->bigInteger('product_id');
-            $table->bigInteger('ware_house_bill_id');
-
+            $table->integer('amount')->nullable();
+            $table->unsignedInteger('product_id')->nullable();
+            $table->foreign('product_id')->references('id')->on('products');
+            $table->unsignedInteger('ware_house_bill_id')->nullable();
+            $table->foreign('ware_house_bill_id')->references('id')->on('warehouse_bills');
         });
     }
 

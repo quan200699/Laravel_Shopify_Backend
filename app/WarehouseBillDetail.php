@@ -9,8 +9,6 @@ class WarehouseBillDetail extends Model
     //
     public $timestamps = false;
     protected $fillable = [
-        'amount',
-        'product_id',
-        'ware_house_bill_id'
+        'amount'
     ];
 }

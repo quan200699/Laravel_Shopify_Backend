@@ -24,21 +24,21 @@ class WarehouseBillDetailController extends Controller
     public function show($id)
     {
         $warehouseBillDetail = $this->warehouseBillDetailService->findById($id);
-        return response()->json($warehouseBillDetail['reviews'], $warehouseBillDetail['statusCode']);
+        return response()->json($warehouseBillDetail['wareHouseBillDetails'], $warehouseBillDetail['statusCode']);
     }
 
     public function store(Request $request)
     {
         $dataWarehouseBillDetail = $this->warehouseBillDetailService->create($request->all());
 
-        return response()->json($dataWarehouseBillDetail['reviews'], $dataWarehouseBillDetail['statusCode']);
+        return response()->json($dataWarehouseBillDetail['wareHouseBillDetails'], $dataWarehouseBillDetail['statusCode']);
     }
 
     public function update(Request $request, $id)
     {
         $dataWarehouseBillDetail = $this->warehouseBillDetailService->update($request->all(), $id);
 
-        return response()->json($dataWarehouseBillDetail['reviews'], $dataWarehouseBillDetail['statusCode']);
+        return response()->json($dataWarehouseBillDetail['wareHouseBillDetails'], $dataWarehouseBillDetail['statusCode']);
     }
 
     public function destroy($id)

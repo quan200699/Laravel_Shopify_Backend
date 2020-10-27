@@ -14,6 +14,7 @@ use App\Repositories\Impl\ProductRepositoryImpl;
 use App\Repositories\Impl\ReviewRepositoryImpl;
 use App\Repositories\Impl\ShoppingCartRepositoryImpl;
 use App\Repositories\Impl\UserRepositoryImpl;
+use App\Repositories\Impl\WarehouseBillDetailRepositoryImpl;
 use App\Repositories\Impl\WarehouseBillRepositoryImpl;
 use App\Repositories\Impl\WarehouseRepositoryImpl;
 use App\Repositories\ItemRepository;
@@ -22,6 +23,7 @@ use App\Repositories\ProductRepository;
 use App\Repositories\ReviewRepository;
 use App\Repositories\ShoppingCartRepository;
 use App\Repositories\UserRepository;
+use App\Repositories\WarehouseBillDetailRepository;
 use App\Repositories\WarehouseBillRepository;
 use App\Repositories\WarehouseRepository;
 use App\Services\CategoryService;
@@ -36,6 +38,7 @@ use App\Services\Impl\ProductServiceImpl;
 use App\Services\Impl\ReviewServiceImpl;
 use App\Services\Impl\ShoppingCartServiceImpl;
 use App\Services\Impl\UserServiceImpl;
+use App\Services\Impl\WarehouseBillDetailServiceImpl;
 use App\Services\Impl\WarehouseBillServiceImpl;
 use App\Services\Impl\WarehouseServiceImpl;
 use App\Services\ItemService;
@@ -44,6 +47,7 @@ use App\Services\ProductService;
 use App\Services\ReviewService;
 use App\Services\ShoppingCartService;
 use App\Services\UserService;
+use App\Services\WarehouseBillDetailService;
 use App\Services\WarehouseBillService;
 use App\Services\WarehouseService;
 use Illuminate\Support\ServiceProvider;
@@ -145,6 +149,14 @@ class AppServiceProvider extends ServiceProvider
         $this->app->singleton(
             ItemService::class,
             ItemServiceImpl::class
+        );
+        $this->app->singleton(
+            WarehouseBillDetailRepository::class,
+            WarehouseBillDetailRepositoryImpl::class
+        );
+        $this->app->singleton(
+            WarehouseBillDetailService::class,
+            WarehouseBillDetailServiceImpl::class
         );
     }
 
