@@ -37,8 +37,7 @@ class ReviewServiceImpl implements ReviewService
 
     public function create($request)
     {
-        $review = $this->reviewRepository->create($request);
-
+        $review = $request->save();
         $statusCode = 201;
         if (!$review)
             $statusCode = 500;
