@@ -127,4 +127,18 @@ class ProductServiceImpl implements ProductService
         ];
         return $data;
     }
+
+    public function getAllProductByName($name)
+    {
+        $products = $this->productRepository->getAllProductByName($name);
+        $statusCode = 200;
+        if (!$products) {
+            $statusCode = 404;
+        }
+        $data = [
+            'statusCode' => $statusCode,
+            'products' => $products
+        ];
+        return $data;
+    }
 }

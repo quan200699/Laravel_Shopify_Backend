@@ -11,4 +11,6 @@ interface ProductRepository extends Repository
     public function findAllBySaleOffGreaterThanZero();
 
     public function getAllProductByPriceCondition($min, $max);
+
+    public function getAllProductByName($name);
 }

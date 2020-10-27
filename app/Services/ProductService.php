@@ -9,5 +9,8 @@ interface ProductService extends Service
     public function findAllByCategory($categoryId);
 
     public function findAllBySaleOffGreaterThanZero();
+
     public function getAllProductByPriceCondition($min, $max);
+
+    public function getAllProductByName($name);
 }

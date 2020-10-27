@@ -36,4 +36,10 @@ class ProductRepositoryImpl extends EloquentRepository implements ProductReposit
             ->get();;
         return $result;
     }
+
+    public function getAllProductByName($name)
+    {
+        $result = $this->model->where('name', 'like', '%' . $name . '%')->get();
+        return $result;
+    }
 }

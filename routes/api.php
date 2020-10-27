@@ -31,6 +31,7 @@ Route::group(['middleware' => 'auth.jwt'], function () {
     });
     Route::group(['prefix' => 'products'], function () {
         Route::get('/', 'ProductController@index')->name('product.all');
+        Route::get('/search', 'ProductController@getAllProductByName')->name('product.getAllProductByName');
         Route::get('/price', 'ProductController@getAllProductByPriceCondition')->name('product.getAllProductByPriceCondition');
         Route::get('/sale-off', 'ProductController@getAllProductWithSaleOffGreaterThan')->name('product.getAllProductWithSaleOffGreaterThan');
         Route::get('/{id}', 'ProductController@show')->name('product.show');
