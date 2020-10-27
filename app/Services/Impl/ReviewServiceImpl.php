@@ -85,4 +85,18 @@ class ReviewServiceImpl implements ReviewService
         ];
         return $data;
     }
+
+    public function getAllReviewByProduct($productId)
+    {
+        $review = $this->reviewRepository->getAllReviewByProduct($productId);
+        $statusCode = 200;
+        if (!$review) {
+            $statusCode = 404;
+        }
+        $data = [
+            'statusCode' => $statusCode,
+            'reviews' => $review
+        ];
+        return $data;
+    }
 }

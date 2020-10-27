@@ -34,6 +34,7 @@ Route::group(['middleware' => 'auth.jwt'], function () {
         Route::get('/sale-off', 'ProductController@getAllProductWithSaleOffGreaterThan')->name('product.getAllProductWithSaleOffGreaterThan');
         Route::get('/{id}', 'ProductController@show')->name('product.show');
         Route::get('/{id}/images', 'ProductController@getAllImage')->name('product.getAllImage');
+        Route::get('/{id}/reviews', 'ProductController@getAllReviewByProduct')->name('product.getAllReviewByProduct');
         Route::post('/', 'ProductController@store')->name('product.store');
         Route::put('/{id}', 'ProductController@update')->name('product.update');
         Route::delete('/{id}', 'ProductController@destroy')->name('product.destroy');

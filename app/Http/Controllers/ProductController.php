@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Services\ImageService;
 use App\Services\ProductService;
+use App\Services\ReviewService;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
@@ -11,11 +12,13 @@ class ProductController extends Controller
     //
     protected $productService;
     protected $imageService;
+    protected $reviewService;
 
-    public function __construct(ProductService $productService, ImageService $imageService)
+    public function __construct(ProductService $productService, ImageService $imageService, ReviewService $reviewService)
     {
         $this->productService = $productService;
         $this->imageService = $imageService;
+        $this->reviewService = $reviewService;
     }
 
     public function index()
@@ -60,5 +63,11 @@ class ProductController extends Controller
     {
         $products = $this->productService->findAllBySaleOffGreaterThanZero();
         return response()->json($products['products'], $products['statusCode']);
+    }
+
+    public function getAllReviewByProduct($productId)
+    {
+        $reviews = $this->reviewService->getAllReviewByProduct($productId);
+        return response()->json($reviews['reviews'], $reviews['statusCode']);
     }
 }
