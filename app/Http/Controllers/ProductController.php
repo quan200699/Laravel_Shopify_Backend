@@ -61,4 +61,12 @@ class ProductController extends Controller
         $products = $this->productService->findAllBySaleOffGreaterThanZero();
         return response()->json($products['products'], $products['statusCode']);
     }
+
+    public function getAllProductByPriceCondition(Request $request)
+    {
+        $min = $request->min;
+        $max = $request->max;
+        $products = $this->productService->getAllProductByPriceCondition($min, $max);
+        return response()->json($products['products'], $products['statusCode']);
+    }
 }

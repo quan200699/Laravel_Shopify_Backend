@@ -28,4 +28,12 @@ class ProductRepositoryImpl extends EloquentRepository implements ProductReposit
         $result = $this->model->where('saleOff', '>', 0)->get();
         return $result;
     }
+
+    public function getAllProductByPriceCondition($min, $max)
+    {
+        $result = $this->model->where('price', '>=', $min)
+            ->where('price', '<=', $max)
+            ->get();;
+        return $result;
+    }
 }

@@ -113,4 +113,18 @@ class ProductServiceImpl implements ProductService
         ];
         return $data;
     }
+
+    public function getAllProductByPriceCondition($min, $max)
+    {
+        $products = $this->productRepository->getAllProductByPriceCondition($min, $max);
+        $statusCode = 200;
+        if (!$products) {
+            $statusCode = 404;
+        }
+        $data = [
+            'statusCode' => $statusCode,
+            'products' => $products
+        ];
+        return $data;
+    }
 }
