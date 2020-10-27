@@ -47,4 +47,10 @@ class ShoppingCartController extends Controller
         $shoppingCart = $this->shoppingCartService->destroy($id);
         return response()->json($shoppingCart['message'], $shoppingCart['statusCode']);
     }
+
+    public function findShoppingCartByUser($userId)
+    {
+        $shoppingCart = $this->shoppingCartService->findByUser($userId);
+        return response()->json($shoppingCart['shoppingCart'], $shoppingCart['statusCode']);
+    }
 }

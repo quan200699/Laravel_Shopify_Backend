@@ -86,4 +86,18 @@ class ShoppingCartServiceImpl implements ShoppingCartService
         ];
         return $data;
     }
+
+    public function findByUser($userId)
+    {
+        $shoppingCart = $this->shoppingCartRepository->findByUser($userId);
+        $statusCode = 200;
+        if (!$shoppingCart) {
+            $statusCode = 404;
+        }
+        $data = [
+            'statusCode' => $statusCode,
+            'shoppingCart' => $shoppingCart
+        ];
+        return $data;
+    }
 }
