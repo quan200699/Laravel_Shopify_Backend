@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Services\WarehouseBillService;
+use App\WarehouseBill;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class WarehouseBillController extends Controller
@@ -29,7 +31,10 @@ class WarehouseBillController extends Controller
 
     public function store(Request $request)
     {
-        $dataWarehouseBill = $this->warehouseBillService->create($request->all());
+        $warehouseBill = new WarehouseBill();
+        $warehouseBill->create_date = Carbon::now();
+        $warehouseBill->warehouse_id = $request->warehouse_id;
+        $dataWarehouseBill = $this->warehouseBillService->create($warehouseBill);
 
         return response()->json($dataWarehouseBill['warehouseBills'], $dataWarehouseBill['statusCode']);
     }

@@ -37,7 +37,7 @@ class WarehouseBillServiceImpl implements WarehouseBillService
 
     public function create($request)
     {
-        $warehouseBills = $this->warehouseBillRepository->create($request);
+        $warehouseBills = $request->save();
 
         $statusCode = 201;
         if (!$warehouseBills)
@@ -45,7 +45,7 @@ class WarehouseBillServiceImpl implements WarehouseBillService
 
         $data = [
             'statusCode' => $statusCode,
-            'warehouseBills' => $warehouseBills
+            'warehouseBills' => $request
         ];
 
         return $data;
