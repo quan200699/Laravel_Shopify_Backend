@@ -70,4 +70,19 @@ class ProductController extends Controller
         $reviews = $this->reviewService->getAllReviewByProduct($productId);
         return response()->json($reviews['reviews'], $reviews['statusCode']);
     }
+
+    public function getAllProductByPriceCondition(Request $request)
+    {
+        $min = $request->min;
+        $max = $request->max;
+        $products = $this->productService->getAllProductByPriceCondition($min, $max);
+        return response()->json($products['products'], $products['statusCode']);
+    }
+
+    public function getAllProductByName(Request $request)
+    {
+        $name = $request->name;
+        $products = $this->productService->getAllProductByName($name);
+        return response()->json($products['products'], $products['statusCode']);
+    }
 }
