@@ -37,7 +37,7 @@ class OrderServiceImpl implements OrderService
 
     public function create($request)
     {
-        $order = $this->orderRepository->create($request);
+        $order = $request->save();
 
         $statusCode = 201;
         if (!$order)
@@ -45,7 +45,7 @@ class OrderServiceImpl implements OrderService
 
         $data = [
             'statusCode' => $statusCode,
-            'orders' => $order
+            'orders' => $request
         ];
 
         return $data;

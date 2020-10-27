@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Order;
 use App\Services\OrderService;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class OrderController extends Controller
@@ -17,7 +19,7 @@ class OrderController extends Controller
 
     public function index()
     {
-        $order= $this->orderService->getAll();
+        $order = $this->orderService->getAll();
         return response()->json($order, 200);
     }
 
@@ -29,7 +31,11 @@ class OrderController extends Controller
 
     public function store(Request $request)
     {
-        $dataOrder = $this->orderService->create($request->all());
+        $order = new Order();
+        $order->status = $request->status;
+        $order->user_id = $request->user_id;
+        $order->create_date = Carbon::now();
+        $dataOrder = $this->orderService->create($order);
 
         return response()->json($dataOrder['orders'], $dataOrder['statusCode']);
     }
