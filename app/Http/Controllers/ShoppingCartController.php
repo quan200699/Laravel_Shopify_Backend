@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Services\ItemService;
 use App\Services\ShoppingCartService;
 use Illuminate\Http\Request;
 
@@ -10,10 +11,12 @@ class ShoppingCartController extends Controller
     //
 
     protected $shoppingCartService;
+    protected $itemService;
 
-    public function __construct(ShoppingCartService $shoppingCartService)
+    public function __construct(ShoppingCartService $shoppingCartService, ItemService $itemService)
     {
         $this->shoppingCartService = $shoppingCartService;
+        $this->itemService = $itemService;
     }
 
     public function index()
@@ -52,5 +55,11 @@ class ShoppingCartController extends Controller
     {
         $shoppingCart = $this->shoppingCartService->findByUser($userId);
         return response()->json($shoppingCart['shoppingCart'], $shoppingCart['statusCode']);
+    }
+
+    public function getAllItemByShoppingCart($shoppingCartId)
+    {
+        $items = $this->itemService->getAllItemByShoppingCart($shoppingCartId);
+        return response()->json($items['items'], $items['statusCode']);
     }
 }

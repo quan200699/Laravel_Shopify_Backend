@@ -84,6 +84,7 @@ Route::group(['middleware' => 'auth.jwt'], function () {
         Route::get('/', 'ShoppingCartController@index')->name('carts.all');
         Route::get('/users/{id}', 'ShoppingCartController@findShoppingCartByUser')->name('carts.findShoppingCartByUser');
         Route::get('/{id}', 'ShoppingCartController@show')->name('carts.show');
+        Route::get('/{id}/items', 'ShoppingCartController@getAllItemByShoppingCart')->name('carts.getAllItemByShoppingCart');
         Route::post('/', 'ShoppingCartController@store')->name('carts.store');
         Route::put('/{id}', 'ShoppingCartController@update')->name('carts.update');
         Route::delete('/{id}', 'ShoppingCartController@destroy')->name('carts.destroy');

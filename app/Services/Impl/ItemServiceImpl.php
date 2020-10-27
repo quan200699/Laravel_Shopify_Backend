@@ -86,4 +86,18 @@ class ItemServiceImpl implements ItemService
         ];
         return $data;
     }
+
+    public function getAllItemByShoppingCart($shoppingCartId)
+    {
+        $items = $this->itemRepository->getAllItemByShoppingCart($shoppingCartId);
+        $statusCode = 200;
+        if(!$items){
+            $statusCode = 404;
+        }
+        $data = [
+            'statusCode' => $statusCode,
+            'items' => $items
+        ];
+        return $data;
+    }
 }
