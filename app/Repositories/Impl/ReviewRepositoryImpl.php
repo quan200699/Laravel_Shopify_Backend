@@ -16,4 +16,12 @@ class ReviewRepositoryImpl extends EloquentRepository implements ReviewRepositor
         $model = Review::class;
         return $model;
     }
+
+    public function findByUserAndProduct($userId, $productId)
+    {
+        $result = $this->model->where('user_id', $userId)
+            ->where('product_id', $productId)
+            ->get();
+        return $result;
+    }
 }

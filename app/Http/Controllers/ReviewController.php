@@ -32,9 +32,9 @@ class ReviewController extends Controller
     public function store(Request $request)
     {
         $review = new Review();
-        $review->comment=$request->comment;
-        $review->evaluate=$request->evaluate;
-        $review->product_id=$request->product_id;
+        $review->comment = $request->comment;
+        $review->evaluate = $request->evaluate;
+        $review->product_id = $request->product_id;
         $review->create_date = Carbon::now();
         $dataReview = $this->reviewService->create($review);
 
@@ -52,5 +52,11 @@ class ReviewController extends Controller
     {
         $review = $this->reviewService->destroy($id);
         return response()->json($review['message'], $review['statusCode']);
+    }
+
+    public function findByUserAndProduct($userId, $productId)
+    {
+        $review = $this->reviewService->findByUserAndProduct($userId, $productId);
+        return response()->json($review['reviews'], $review['statusCode']);
     }
 }

@@ -47,6 +47,7 @@ Route::group(['middleware' => 'auth.jwt'], function () {
     });
     Route::group(['prefix' => 'reviews'], function () {
         Route::get('/', 'ReviewController@index')->name('review.all');
+        Route::get('/users/{userId}/products/{productId}', 'ReviewController@findByUserAndProduct')->name('review.findByUserAndProduct');
         Route::get('/{id}', 'ReviewController@show')->name('review.show');
         Route::post('/', 'ReviewController@store')->name('review.store');
         Route::put('/{id}', 'ReviewController@update')->name('review.update');
