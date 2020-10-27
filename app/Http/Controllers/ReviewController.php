@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Review;
 use App\Services\ReviewService;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class ReviewController extends Controller
@@ -29,7 +31,12 @@ class ReviewController extends Controller
 
     public function store(Request $request)
     {
-        $dataReview = $this->reviewService->create($request->all());
+        $review = new Review();
+        $review->comment = $request->comment;
+        $review->evaluate = $request->evaluate;
+        $review->product_id = $request->product_id;
+        $review->create_date = Carbon::now();
+        $dataReview = $this->reviewService->create($review);
 
         return response()->json($dataReview['reviews'], $dataReview['statusCode']);
     }
@@ -45,5 +52,11 @@ class ReviewController extends Controller
     {
         $review = $this->reviewService->destroy($id);
         return response()->json($review['message'], $review['statusCode']);
+    }
+
+    public function findByUserAndProduct($userId, $productId)
+    {
+        $review = $this->reviewService->findByUserAndProduct($userId, $productId);
+        return response()->json($review['reviews'], $review['statusCode']);
     }
 }

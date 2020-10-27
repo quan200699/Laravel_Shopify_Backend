@@ -37,8 +37,7 @@ class ReviewServiceImpl implements ReviewService
 
     public function create($request)
     {
-        $review = $this->reviewRepository->create($request);
-
+        $review = $request->save();
         $statusCode = 201;
         if (!$review)
             $statusCode = 500;
@@ -82,6 +81,20 @@ class ReviewServiceImpl implements ReviewService
         $data = [
             'statusCode' => $statusCode,
             'message' => $message
+        ];
+        return $data;
+    }
+
+    public function findByUserAndProduct($userId, $productId)
+    {
+        $review = $this->reviewRepository->findByUserAndProduct($userId, $productId);
+        $statusCode = 200;
+        if (!$review) {
+            $statusCode = 404;
+        }
+        $data = [
+            'statusCode' => $statusCode,
+            'reviews' => $review
         ];
         return $data;
     }
