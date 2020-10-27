@@ -111,11 +111,11 @@ Route::group(['middleware' => 'auth.jwt'], function () {
         Route::put('/{id}', 'WarehouseBillDetailController@update')->name('warehouseBillDetail.update');
         Route::delete('/{id}', 'WarehouseBillDetailController@destroy')->name('warehouseBillDetail.destroy');
     });
-});
-Route::group(['prefix' => 'orders'], function () {
-    Route::get('/', 'OrderController@index')->name('order.all');
-    Route::get('/{id}', 'OrderController@show')->name('order.show');
-    Route::post('/', 'OrderController@store')->name('order.store');
-    Route::put('/{id}', 'OrderController@update')->name('order.update');
-    Route::delete('/{id}', 'OrderController@destroy')->name('order.destroy');
+    Route::group(['prefix' => 'orders'], function () {
+        Route::get('/', 'OrderController@index')->name('order.all');
+        Route::get('/{id}', 'OrderController@show')->name('order.show');
+        Route::post('/', 'OrderController@store')->name('order.store');
+        Route::put('/{id}', 'OrderController@update')->name('order.update');
+        Route::delete('/{id}', 'OrderController@destroy')->name('order.destroy');
+    });
 });

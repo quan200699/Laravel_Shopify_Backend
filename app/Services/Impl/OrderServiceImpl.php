@@ -5,12 +5,13 @@ namespace App\Services\Impl;
 
 
 use App\Repositories\OrderRepository;
+use App\Services\OrderService;
 
-class OrderServiceImpl implements \App\Services\OrderService
+class OrderServiceImpl implements OrderService
 {
     protected $orderRepository;
 
-    public function __construct(OrderRepository  $orderRepository)
+    public function __construct(OrderRepository $orderRepository)
     {
         $this->orderRepository = $orderRepository;
     }
@@ -29,7 +30,7 @@ class OrderServiceImpl implements \App\Services\OrderService
         }
         $data = [
             'statusCode' => $statusCode,
-            'products' => $order
+            'orders' => $order
         ];
         return $data;
     }
@@ -44,7 +45,7 @@ class OrderServiceImpl implements \App\Services\OrderService
 
         $data = [
             'statusCode' => $statusCode,
-            'products' => $order
+            'orders' => $order
         ];
 
         return $data;
@@ -55,14 +56,14 @@ class OrderServiceImpl implements \App\Services\OrderService
         $oldOrder = $this->orderRepository->findById($id);
         if (!$oldOrder) {
             $statusCode = 404;
-            $newProduct = null;
+            $newOrder = null;
         } else {
-            $newProduct = $this->orderRepository->update($request, $oldOrder);
+            $newOrder = $this->orderRepository->update($request, $oldOrder);
             $statusCode = 200;
         }
         $data = [
             'statusCode' => $statusCode,
-            'products' => $newProduct
+            'orders' => $newOrder
         ];
         return $data;
     }

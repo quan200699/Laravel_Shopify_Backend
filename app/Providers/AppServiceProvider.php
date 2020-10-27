@@ -10,6 +10,7 @@ use App\Repositories\Impl\CustomerInfoRepositoryImpl;
 use App\Repositories\Impl\ImageRepositoryImpl;
 use App\Repositories\Impl\ItemRepositoryImpl;
 use App\Repositories\Impl\NotificationRepositoryImpl;
+use App\Repositories\Impl\OrderRepositoryImpl;
 use App\Repositories\Impl\ProductRepositoryImpl;
 use App\Repositories\Impl\ReviewRepositoryImpl;
 use App\Repositories\Impl\ShoppingCartRepositoryImpl;
@@ -19,6 +20,7 @@ use App\Repositories\Impl\WarehouseBillRepositoryImpl;
 use App\Repositories\Impl\WarehouseRepositoryImpl;
 use App\Repositories\ItemRepository;
 use App\Repositories\NotificationRepository;
+use App\Repositories\OrderRepository;
 use App\Repositories\ProductRepository;
 use App\Repositories\ReviewRepository;
 use App\Repositories\ShoppingCartRepository;
@@ -34,6 +36,7 @@ use App\Services\Impl\CustomerInfoServiceImpl;
 use App\Services\Impl\ImageServiceImpl;
 use App\Services\Impl\ItemServiceImpl;
 use App\Services\Impl\NotificationServiceImpl;
+use App\Services\Impl\OrderServiceImpl;
 use App\Services\Impl\ProductServiceImpl;
 use App\Services\Impl\ReviewServiceImpl;
 use App\Services\Impl\ShoppingCartServiceImpl;
@@ -43,6 +46,7 @@ use App\Services\Impl\WarehouseBillServiceImpl;
 use App\Services\Impl\WarehouseServiceImpl;
 use App\Services\ItemService;
 use App\Services\NotificationService;
+use App\Services\OrderService;
 use App\Services\ProductService;
 use App\Services\ReviewService;
 use App\Services\ShoppingCartService;
@@ -157,6 +161,14 @@ class AppServiceProvider extends ServiceProvider
         $this->app->singleton(
             WarehouseBillDetailService::class,
             WarehouseBillDetailServiceImpl::class
+        );
+        $this->app->singleton(
+            OrderRepository::class,
+            OrderRepositoryImpl::class
+        );
+        $this->app->singleton(
+            OrderService::class,
+            OrderServiceImpl::class
         );
     }
 

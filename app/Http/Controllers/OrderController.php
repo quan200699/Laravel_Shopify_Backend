@@ -24,21 +24,21 @@ class OrderController extends Controller
     public function show($id)
     {
         $order = $this->orderService->findById($id);
-        return response()->json($order['categories'], $order['statusCode']);
+        return response()->json($order['orders'], $order['statusCode']);
     }
 
     public function store(Request $request)
     {
         $dataOrder = $this->orderService->create($request->all());
 
-        return response()->json($dataOrder['categories'], $dataOrder['statusCode']);
+        return response()->json($dataOrder['orders'], $dataOrder['statusCode']);
     }
 
     public function update(Request $request, $id)
     {
         $dataOrder = $this->orderService->update($request->all(), $id);
 
-        return response()->json($dataOrder['categories'], $dataOrder['statusCode']);
+        return response()->json($dataOrder['orders'], $dataOrder['statusCode']);
     }
 
     public function destroy($id)

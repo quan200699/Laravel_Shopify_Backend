@@ -9,8 +9,6 @@ class Order extends Model
     //
     public $timestamps = false;
     protected $fillable = [
-        'create_date',
-        'status',
         'user_id'
     ];
 }
