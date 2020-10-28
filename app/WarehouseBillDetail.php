@@ -11,4 +11,12 @@ class WarehouseBillDetail extends Model
     protected $fillable = [
         'amount'
     ];
+    public function wareHouseBill()
+    {
+        return $this->belongsTo('App\WarehouseBill');
+    }
+    public function product()
+    {
+        return $this->belongsTo('App\Product');
+    }
 }

@@ -11,4 +11,14 @@ class OrderDetail extends Model
     protected $fillable = [
         'amount',
     ];
+
+    public function orders()
+    {
+        return $this->belongsTo('App\Order');
+    }
+
+    public function product()
+    {
+        return $this->belongsTo('App\Product');
+    }
 }

@@ -14,4 +14,14 @@ class WarehouseBill extends Model
     protected $casts = [
         'create_date' => 'datetime',
     ];
+
+    public function warehouse()
+    {
+        return $this->belongsTo('App\Warehouse');
+    }
+
+    public function wareHouseBillDetails()
+    {
+        return $this->hasMany('App\WarehouseBillDetail');
+    }
 }

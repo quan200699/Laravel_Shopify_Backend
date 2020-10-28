@@ -9,4 +9,9 @@ class Item extends Model
     //
     public $timestamps = false;
     protected $fillable = ['quantity'];
+
+    public function shoppingCart()
+    {
+        return $this->belongsTo('App\ShoppingCart');
+    }
 }

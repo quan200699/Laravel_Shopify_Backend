@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Product extends Model
 {
     //
-    public $timestamps=false;
+    public $timestamps = false;
 
     protected $fillable = [
         'name',
@@ -18,13 +18,29 @@ class Product extends Model
     protected $casts = [
         'createdDate' => 'datetime',
     ];
-    public function category(){
+
+    public function category()
+    {
         return $this->belongsTo('App\Category');
     }
-    public function images(){
+
+    public function images()
+    {
         return $this->hasMany('App\Image');
     }
-    public function reviews(){
+
+    public function reviews()
+    {
         return $this->hasMany('App\Review');
+    }
+
+    public function orderDetails()
+    {
+        return $this->hasMany('App\OrderDetail');
+    }
+
+    public function wareHouseBillDetails()
+    {
+        return $this->hasMany('App\WarehouseBillDetail');
     }
 }

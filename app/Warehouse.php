@@ -12,4 +12,9 @@ class Warehouse extends Model
         'address',
         'name'
     ];
+
+    public function wareHouseBills()
+    {
+        return $this->hasMany('App\WarehouseBill');
+    }
 }
