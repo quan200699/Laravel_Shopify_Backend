@@ -16,4 +16,11 @@ class OrderRepositoryImpl extends EloquentRepository implements OrderRepository
         $model = Order::class;
         return $model;
     }
+
+    public function findAllByUserAndStatus($user_id, $status)
+    {
+        $result = $this->model->where('user_id', $user_id)
+            ->where('status', $status)->get();
+        return $result;
+    }
 }

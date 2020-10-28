@@ -113,6 +113,7 @@ Route::group(['middleware' => 'auth.jwt'], function () {
     });
     Route::group(['prefix' => 'orders'], function () {
         Route::get('/', 'OrderController@index')->name('order.all');
+        Route::get('/users/{id}', 'OrderController@findAllByUserAndStatus')->name('order.findAllByUserAndStatus');
         Route::get('/{id}', 'OrderController@show')->name('order.show');
         Route::post('/', 'OrderController@store')->name('order.store');
         Route::put('/{id}', 'OrderController@update')->name('order.update');

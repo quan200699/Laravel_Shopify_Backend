@@ -52,4 +52,11 @@ class OrderController extends Controller
         $order = $this->orderService->destroy($id);
         return response()->json($order['message'], $order['statusCode']);
     }
+
+    public function findAllByUserAndStatus($user_id, Request $request)
+    {
+        $status = $request->statuss;
+        $orders = $this->orderService->findAllByUserAndStatus($user_id, $status);
+        return response()->json($orders['orders'], $orders['statusCode']);
+    }
 }
