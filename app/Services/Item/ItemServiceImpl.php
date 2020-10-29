@@ -18,12 +18,12 @@ class ItemServiceImpl implements ItemService
 
     public function getAll()
     {
-        return $this->itemRepository->getAll();
+        return $this->itemRepository->getAllWithRelationship();
     }
 
     public function findById($id)
     {
-        $items = $this->itemRepository->findById($id);
+        $items = $this->itemRepository->findByIdWithRelationship($id);
         $statusCode = 200;
         if (!$items) {
             $statusCode = 404;

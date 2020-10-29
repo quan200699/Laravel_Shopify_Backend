@@ -18,7 +18,18 @@ class ItemRepositoryImpl extends EloquentRepository implements ItemRepository
 
     public function getAllItemByShoppingCart($shoppingCartId)
     {
-        $result = $this->model->where('shopping_cart_id', $shoppingCartId)->get();
+        $result = Item::with('product', 'shoppingCart')
+            ->where('shopping_cart_id', $shoppingCartId)->get();
         return $result;
+    }
+
+    public function getAllWithRelationship()
+    {
+        return Item::with('product', 'shoppingCart')->get();
+    }
+
+    public function findByIdWithRelationship($id)
+    {
+        return Item::with('product', 'shoppingCart')->where('id', $id)->get();
     }
 }
