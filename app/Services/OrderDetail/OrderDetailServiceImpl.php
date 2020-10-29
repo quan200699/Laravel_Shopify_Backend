@@ -18,12 +18,12 @@ class OrderDetailServiceImpl implements OrderDetailService
 
     public function getAll()
     {
-        return $this->orderDetailRepository->getAll();
+        return $this->orderDetailRepository->getAllWithRelationship();
     }
 
     public function findById($id)
     {
-        $orderDetail = $this->orderDetailRepository->findById($id);
+        $orderDetail = $this->orderDetailRepository->findByIdWithRelationship($id);
         $statusCode = 200;
         if (!$orderDetail) {
             $statusCode = 404;
