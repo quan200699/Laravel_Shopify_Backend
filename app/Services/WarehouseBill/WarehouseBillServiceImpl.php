@@ -18,12 +18,12 @@ class WarehouseBillServiceImpl implements WarehouseBillService
 
     public function getAll()
     {
-        return $this->warehouseBillRepository->getAll();
+        return $this->warehouseBillRepository->getAllWithRelationship();
     }
 
     public function findById($id)
     {
-        $warehouseBills = $this->warehouseBillRepository->findById($id);
+        $warehouseBills = $this->warehouseBillRepository->findByIdWithRelationship($id);
         $statusCode = 200;
         if (!$warehouseBills) {
             $statusCode = 404;

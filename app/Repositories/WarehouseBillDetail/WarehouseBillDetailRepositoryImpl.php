@@ -15,4 +15,15 @@ class WarehouseBillDetailRepositoryImpl extends EloquentRepository implements Wa
         $model = WarehouseBillDetail::class;
         return $model;
     }
+
+    public function getAllWithRelationship()
+    {
+        return WarehouseBillDetail::with('wareHouseBill', 'product')->get();
+    }
+
+    public function findByIdWithRelationship($id)
+    {
+        return WarehouseBillDetail::with('wareHouseBill', 'product')
+            ->where('id', $id)->get();
+    }
 }
