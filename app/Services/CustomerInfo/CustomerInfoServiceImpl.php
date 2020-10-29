@@ -17,12 +17,12 @@ class CustomerInfoServiceImpl implements CustomerInfoService
 
     public function getAll()
     {
-        return $this->customerInfoRepository->getAll();
+        return $this->customerInfoRepository->getAllWithRelationship();
     }
 
     public function findById($id)
     {
-        $customerInfo = $this->customerInfoRepository->findById($id);
+        $customerInfo = $this->customerInfoRepository->findByIdWithRelationship($id);
         $statusCode = 200;
         if (!$customerInfo) {
             $statusCode = 404;
@@ -52,12 +52,12 @@ class CustomerInfoServiceImpl implements CustomerInfoService
 
     public function update($request, $id)
     {
-        $oldCustomerinfo = $this->customerInfoRepository->findById($id);
-        if (!$oldCustomerinfo) {
+        $oldCustomerInfo = $this->customerInfoRepository->findById($id);
+        if (!$oldCustomerInfo) {
             $statusCode = 404;
             $newCustomerInfo = null;
         } else {
-            $newCustomerInfo = $this->customerInfoRepository->update($request, $oldCustomerinfo);
+            $newCustomerInfo = $this->customerInfoRepository->update($request, $oldCustomerInfo);
             $statusCode = 200;
         }
         $data = [
