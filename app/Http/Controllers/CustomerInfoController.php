@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Services\CustomerInfoService;
+use App\Services\CustomerInfo\CustomerInfoService;
 use Illuminate\Http\Request;
 
 class CustomerInfoController extends Controller

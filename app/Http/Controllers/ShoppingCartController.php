@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Services\ItemService;
-use App\Services\ShoppingCartService;
+use App\Services\Item\ItemService;
+use App\Services\ShoppingCart\ShoppingCartService;
 use Illuminate\Http\Request;
 
 class ShoppingCartController extends Controller

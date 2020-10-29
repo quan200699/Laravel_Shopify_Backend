@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Services\CategoryService;
-use App\Services\ProductService;
+use App\Services\Category\CategoryService;
+use App\Services\Product\ProductService;
 use Illuminate\Http\Request;
 
 class CategoryController extends Controller

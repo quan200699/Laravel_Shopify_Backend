@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Services\ImageService;
-use App\Services\ProductService;
-use App\Services\ReviewService;
+use App\Services\Image\ImageService;
+use App\Services\Product\ProductService;
+use App\Services\Review\ReviewService;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller

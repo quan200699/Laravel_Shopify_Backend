@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Services\WarehouseBillService;
+use App\Services\WarehouseBill\WarehouseBillService;
 use App\WarehouseBill;
 use Carbon\Carbon;
 use Illuminate\Http\Request;

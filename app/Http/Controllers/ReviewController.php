@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Review;
-use App\Services\ReviewService;
+use App\Services\Review\ReviewService;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 

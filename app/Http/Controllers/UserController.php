@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Services\NotificationService;
-use App\Services\UserService;
+
+use App\Services\Notification\NotificationService;
+use App\Services\User\UserService;
 
 class UserController extends Controller
 {

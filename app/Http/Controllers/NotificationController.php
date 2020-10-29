@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Notification;
-use App\Services\NotificationService;
+use App\Services\Notification\NotificationService;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 

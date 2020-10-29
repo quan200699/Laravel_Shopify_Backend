@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Services\WarehouseService;
+use App\Services\Warehouse\WarehouseService;
 use Illuminate\Http\Request;
 
 class WarehouseController extends Controller

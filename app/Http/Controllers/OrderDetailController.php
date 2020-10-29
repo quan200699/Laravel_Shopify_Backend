@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Services\OrderDetailService;
+use App\Services\OrderDetail\OrderDetailService;
 use Illuminate\Http\Request;
 
 class OrderDetailController extends Controller

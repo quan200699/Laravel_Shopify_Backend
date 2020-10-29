@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Services\ItemService;
+use App\Services\Item\ItemService;
 use Illuminate\Http\Request;
 
 class ItemController extends Controller

@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Services\ImageService;
+use App\Services\Image\ImageService;
 use Illuminate\Http\Request;
 
 class ImageController extends Controller

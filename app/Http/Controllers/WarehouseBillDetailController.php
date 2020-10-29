@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Services\WarehouseBillDetailService;
+use App\Services\WarehouseBillDetail\WarehouseBillDetailService;
 use Illuminate\Http\Request;
 
 class WarehouseBillDetailController extends Controller
