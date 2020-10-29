@@ -17,12 +17,12 @@ class ProductServiceImpl implements ProductService
 
     public function getAll()
     {
-        return $this->productRepository->getAll();
+        return $this->productRepository->getAllWithRelationship();
     }
 
     public function findById($id)
     {
-        $product = $this->productRepository->findById($id);
+        $product = $this->productRepository->findByIdWithRelationship($id);
         $statusCode = 200;
         if (!$product) {
             $statusCode = 404;

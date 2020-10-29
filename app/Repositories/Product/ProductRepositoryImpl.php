@@ -18,19 +18,19 @@ class ProductRepositoryImpl extends EloquentRepository implements ProductReposit
 
     public function findAllByCategory($categoryId)
     {
-        $result = $this->model->where('category_id', $categoryId)->get();
+        $result = Product::with('category')->where('category_id', $categoryId)->get();
         return $result;
     }
 
     public function findAllBySaleOffGreaterThanZero()
     {
-        $result = $this->model->where('saleOff', '>', 0)->get();
+        $result = Product::with('category')->where('saleOff', '>', 0)->get();
         return $result;
     }
 
     public function getAllProductByPriceCondition($min, $max)
     {
-        $result = $this->model->where('price', '>=', $min)
+        $result = Product::with('category')->where('price', '>=', $min)
             ->where('price', '<=', $max)
             ->get();
         return $result;
@@ -38,7 +38,17 @@ class ProductRepositoryImpl extends EloquentRepository implements ProductReposit
 
     public function getAllProductByName($name)
     {
-        $result = $this->model->where('name', 'like', '%' . $name . '%')->get();
+        $result = Product::with('category')->where('name', 'like', '%' . $name . '%')->get();
         return $result;
+    }
+
+    public function getAllWithRelationship()
+    {
+        return Product::with('category')->get();
+    }
+
+    public function findByIdWithRelationship($id)
+    {
+        return Product::with('category')->where('id', $id)->get();
     }
 }
