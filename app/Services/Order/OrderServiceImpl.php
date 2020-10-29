@@ -17,12 +17,12 @@ class OrderServiceImpl implements OrderService
 
     public function getAll()
     {
-        return $this->orderRepository->getAll();
+        return $this->orderRepository->getAllWithRelationship();
     }
 
     public function findById($id)
     {
-        $order = $this->orderRepository->findById($id);
+        $order = $this->orderRepository->findByIdWithRelationship($id);
         $statusCode = 200;
         if (!$order) {
             $statusCode = 404;

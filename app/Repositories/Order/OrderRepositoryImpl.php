@@ -18,8 +18,18 @@ class OrderRepositoryImpl extends EloquentRepository implements OrderRepository
 
     public function findAllByUserAndStatus($user_id, $status)
     {
-        $result = $this->model->where('user_id', $user_id)
+        $result = Order::with('user')->where('user_id', $user_id)
             ->where('status', $status)->get();
         return $result;
+    }
+
+    public function getAllWithRelationship()
+    {
+        return Order::with('user')->get();
+    }
+
+    public function findByIdWithRelationship($id)
+    {
+        return Order::with('user')->where('id', $id)->get();
     }
 }
