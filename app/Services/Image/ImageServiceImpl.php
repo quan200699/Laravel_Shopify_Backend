@@ -18,12 +18,12 @@ class ImageServiceImpl implements ImageService
 
     public function getAll()
     {
-        return $this->imageRepository->getAll();
+        return $this->imageRepository->getAllWithRelationship();
     }
 
     public function findById($id)
     {
-        $image = $this->imageRepository->findById($id);
+        $image = $this->imageRepository->findByIdWithRelationship($id);
         $statusCode = 200;
         if (!$image) {
             $statusCode = 404;

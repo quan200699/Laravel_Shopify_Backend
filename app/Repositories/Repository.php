@@ -15,4 +15,8 @@ interface Repository
     public function update($data, $object);
 
     public function destroy($object);
+
+    public function getAllWithRelationship();
+
+    public function findByIdWithRelationship($id);
 }

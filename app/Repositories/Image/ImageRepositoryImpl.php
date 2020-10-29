@@ -18,7 +18,17 @@ class ImageRepositoryImpl extends EloquentRepository implements ImageRepository
 
     public function findAllByProduct($productId)
     {
-        $result = $this->model->where('product_id', $productId)->get();
+        $result = Image::with('product')->where('product_id', $productId)->get();
         return $result;
+    }
+
+    public function getAllWithRelationship()
+    {
+        return Image::with('product')->get();
+    }
+
+    public function findByIdWithRelationship($id)
+    {
+        return Image::with('product')->where('id', $id)->get();
     }
 }
