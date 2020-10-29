@@ -20,4 +20,14 @@ class UserRepositoryImpl extends EloquentRepository implements UserRepository
         $result = $this->model->where('email',$email)->first();
         return $result;
     }
+
+    public function getAllWithRelationship()
+    {
+        // TODO: Implement getAllWithRelationship() method.
+    }
+
+    public function findByIdWithRelationship($id)
+    {
+        // TODO: Implement findByIdWithRelationship() method.
+    }
 }
