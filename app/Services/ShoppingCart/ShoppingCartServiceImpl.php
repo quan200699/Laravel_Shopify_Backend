@@ -18,12 +18,12 @@ class ShoppingCartServiceImpl implements ShoppingCartService
 
     public function getAll()
     {
-        return $this->shoppingCartRepository->getAll();
+        return $this->shoppingCartRepository->getAllWithRelationship();
     }
 
     public function findById($id)
     {
-        $shoppingCart = $this->shoppingCartRepository->findById($id);
+        $shoppingCart = $this->shoppingCartRepository->findByIdWithRelationship($id);
         $statusCode = 200;
         if (!$shoppingCart) {
             $statusCode = 404;
