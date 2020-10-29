@@ -4,31 +4,14 @@
 namespace App\Repositories\CustomerInfo;
 
 use App\CustomerInfo;
+use App\Repositories\Eloquent\EloquentRepository;
 
-class CustomerInfoRepositoryImpl implements CustomerInfoRepository
+class CustomerInfoRepositoryImpl extends EloquentRepository implements CustomerInfoRepository
 {
-    public function getAll()
-    {
-        return CustomerInfo::with('user')->get();
-    }
 
-    public function findById($id)
+    public function getModel()
     {
-        // TODO: Implement findById() method.
-    }
-
-    public function create($data)
-    {
-        // TODO: Implement create() method.
-    }
-
-    public function update($data, $object)
-    {
-        // TODO: Implement update() method.
-    }
-
-    public function destroy($object)
-    {
-        // TODO: Implement destroy() method.
+        $this->model = CustomerInfo::class;
+        return $this->model;
     }
 }
