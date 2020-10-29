@@ -18,12 +18,12 @@ class NotificationServiceImpl implements NotificationService
 
     public function getAll()
     {
-        return $this->notificationRepository->getAll();
+        return $this->notificationRepository->getAllWithRelationship();
     }
 
     public function findById($id)
     {
-        $notifications = $this->notificationRepository->findById($id);
+        $notifications = $this->notificationRepository->findByIdWithRelationship($id);
         $statusCode = 200;
         if (!$notifications) {
             $statusCode = 404;
