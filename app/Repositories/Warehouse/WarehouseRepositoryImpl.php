@@ -15,4 +15,14 @@ class WarehouseRepositoryImpl extends EloquentRepository implements WarehouseRep
         $model = Warehouse::class;
         return $model;
     }
+
+    public function getAllWithRelationship()
+    {
+        // TODO: Implement getAllWithRelationship() method.
+    }
+
+    public function findByIdWithRelationship($id)
+    {
+        // TODO: Implement findByIdWithRelationship() method.
+    }
 }
