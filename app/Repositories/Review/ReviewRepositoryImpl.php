@@ -18,7 +18,7 @@ class ReviewRepositoryImpl extends EloquentRepository implements ReviewRepositor
 
     public function findByUserAndProduct($userId, $productId)
     {
-        $result = $this->model->where('user_id', $userId)
+        $result = Review::with('user', 'product')->where('user_id', $userId)
             ->where('product_id', $productId)
             ->get();
         return $result;
@@ -26,7 +26,17 @@ class ReviewRepositoryImpl extends EloquentRepository implements ReviewRepositor
 
     public function getAllReviewByProduct($productId)
     {
-        $result = $this->model->where('product_id', $productId)->get();
+        $result = Review::with('user', 'product')->where('product_id', $productId)->get();
         return $result;
+    }
+
+    public function getAllWithRelationship()
+    {
+        return Review::with('user', 'product')->get();
+    }
+
+    public function findByIdWithRelationship($id)
+    {
+        return Review::with('user', 'product')->where('id', $id);
     }
 }

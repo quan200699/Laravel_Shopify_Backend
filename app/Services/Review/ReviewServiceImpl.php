@@ -17,12 +17,12 @@ class ReviewServiceImpl implements ReviewService
 
     public function getAll()
     {
-        return $this->reviewRepository->getAll();
+        return $this->reviewRepository->getAllWithRelationship();
     }
 
     public function findById($id)
     {
-        $review = $this->reviewRepository->findById($id);
+        $review = $this->reviewRepository->findByIdWithRelationship($id);
         $statusCode = 200;
         if (!$review) {
             $statusCode = 404;
