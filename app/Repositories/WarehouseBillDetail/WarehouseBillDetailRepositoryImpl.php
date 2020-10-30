@@ -30,6 +30,6 @@ class WarehouseBillDetailRepositoryImpl extends EloquentRepository implements Wa
     public function findAllByWarehouseBill($warehouseBillId)
     {
         return WarehouseBillDetail::with('warehouseBill', 'product')
-            ->where('ware_house_bill_id',$warehouseBillId);
+            ->where('ware_house_bill_id',$warehouseBillId)->get();
     }
 }

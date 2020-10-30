@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Services\WarehouseBill\WarehouseBillService;
+use App\Services\WarehouseBillDetail\WarehouseBillDetailService;
 use App\WarehouseBill;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -11,10 +12,12 @@ class WarehouseBillController extends Controller
 {
     //
     protected $warehouseBillService;
+    protected $warehouseBillDetailService;
 
-    public function __construct(WarehouseBillService $warehouseBillService)
+    public function __construct(WarehouseBillService $warehouseBillService, WarehouseBillDetailService $warehouseBillDetailService)
     {
         $this->warehouseBillService = $warehouseBillService;
+        $this->warehouseBillDetailService = $warehouseBillDetailService;
     }
 
     public function index()
@@ -50,5 +53,11 @@ class WarehouseBillController extends Controller
     {
         $warehouseBill = $this->warehouseBillService->destroy($id);
         return response()->json($warehouseBill['message'], $warehouseBill['statusCode']);
+    }
+
+    public function findAllByWarehouseBill($warehouseBillId)
+    {
+        $warehouseBillDetails = $this->warehouseBillDetailService->findAllByWarehouseBill($warehouseBillId);
+        return response()->json($warehouseBillDetails['wareHouseBillDetails'], $warehouseBillDetails['statusCode']);
     }
 }
