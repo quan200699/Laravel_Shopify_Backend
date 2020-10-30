@@ -140,4 +140,18 @@ class ProductServiceImpl implements ProductService
         ];
         return $data;
     }
+
+    public function getAllProductLatest()
+    {
+        $products = $this->productRepository->getAllProductLatest();
+        $statusCode = 200;
+        if (!$products) {
+            $statusCode = 404;
+        }
+        $data = [
+            'statusCode' => $statusCode,
+            'products' => $products
+        ];
+        return $data;
+    }
 }

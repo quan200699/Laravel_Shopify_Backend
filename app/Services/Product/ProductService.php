@@ -14,4 +14,6 @@ interface ProductService extends Service
     public function getAllProductByPriceCondition($min, $max);
 
     public function getAllProductByName($name);
+
+    public function getAllProductLatest();
 }

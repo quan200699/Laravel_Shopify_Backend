@@ -14,4 +14,6 @@ interface ProductRepository extends Repository
     public function getAllProductByPriceCondition($min, $max);
 
     public function getAllProductByName($name);
+
+    public function getAllProductLatest();
 }

@@ -51,4 +51,9 @@ class ProductRepositoryImpl extends EloquentRepository implements ProductReposit
     {
         return Product::with('category')->where('id', $id)->get();
     }
+
+    public function getAllProductLatest()
+    {
+        return Product::with('category')->orderBy('createdDate')->get();
+    }
 }

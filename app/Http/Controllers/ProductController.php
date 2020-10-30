@@ -85,4 +85,10 @@ class ProductController extends Controller
         $products = $this->productService->getAllProductByName($name);
         return response()->json($products['products'], $products['statusCode']);
     }
+
+    public function getAllProductLatest()
+    {
+        $products = $this->productService->getAllProductLatest();
+        return response()->json($products['products'], $products['statusCode']);
+    }
 }
