@@ -65,6 +65,7 @@ Route::group(['middleware' => 'auth.jwt'], function () {
     });
     Route::group(['prefix' => 'warehousebills'], function () {
         Route::get('/', 'WarehouseBillController@index')->name('warehouseBill.all');
+        Route::get('/total-price', 'WarehouseBillController@sumTotalPriceHaveBought')->name('warehouseBill.sumTotalPriceHaveBought');
         Route::get('/{id}', 'WarehouseBillController@show')->name('warehouseBill.show');
         Route::post('/', 'WarehouseBillController@store')->name('warehouseBill.store');
         Route::put('/{id}', 'WarehouseBillController@update')->name('warehouseBill.update');

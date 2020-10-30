@@ -7,4 +7,5 @@ use App\Services\Service;
 
 interface WarehouseBillService extends Service
 {
+    public function sumTotalPriceHaveBought($month, $year);
 }
