@@ -32,4 +32,13 @@ class OrderRepositoryImpl extends EloquentRepository implements OrderRepository
     {
         return Order::with('user')->where('id', $id)->get();
     }
+
+    public function findAllProductsByUser($user_id)
+    {
+        return Order::with('user')
+            ->leftJoin('order_details','orders.id','=','order_details.orders_id')
+            ->leftJoin('products','order_details.product_id','=','products.id')
+            ->where('orders.user_id',$user_id)->get();
+        // TODO: Implement findAllProductsByUser() method.
+    }
 }

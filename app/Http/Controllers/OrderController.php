@@ -66,4 +66,8 @@ class OrderController extends Controller
         $orderDetail = $this->orderDetailService->findAllOrderDetailByOrder($orderId);
         return response()->json($orderDetail['orderDetails'], $orderDetail['statusCode']);
     }
+    public function findAllProductsByUser($user_id){
+        $orders = $this->orderService->findAllProductsByUser($user_id);
+        return response()->json($orders['orders'], $orders['statusCode']);
+    }
 }

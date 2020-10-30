@@ -98,4 +98,18 @@ class OrderServiceImpl implements OrderService
         ];
         return $data;
     }
+
+    public function findAllProductsByUser($user_id)
+    {
+        $orders = $this->orderRepository->findAllProductsByUser($user_id);
+        $statusCode = 200;
+        if (!$orders) {
+            $statusCode = 404;
+        }
+        $data = [
+            'statusCode' => $statusCode,
+            'orders' => $orders
+        ];
+        return $data;
+    }
 }
