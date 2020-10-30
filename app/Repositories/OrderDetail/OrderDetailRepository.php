@@ -7,5 +7,5 @@ use App\Repositories\Repository;
 
 interface OrderDetailRepository extends Repository
 {
-
+    public function findAllOrderDetailByOrder($orderId);
 }

@@ -85,4 +85,19 @@ class OrderDetailServiceImpl implements OrderDetailService
         ];
         return $data;
     }
+
+    public function findAllOrderDetailByOrder($orderId)
+    {
+
+        $orderDetail = $this->orderDetailRepository->findAllOrderDetailByOrder($orderId);
+        $statusCode = 200;
+        if (!$orderDetail) {
+            $statusCode = 404;
+        }
+        $data = [
+            'statusCode' => $statusCode,
+            'orderDetails' => $orderDetail
+        ];
+        return $data;
+    }
 }

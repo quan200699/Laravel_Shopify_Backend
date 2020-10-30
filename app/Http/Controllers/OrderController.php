@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Order;
 use App\Services\Order\OrderService;
+use App\Services\OrderDetail\OrderDetailService;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 
@@ -11,10 +12,12 @@ class OrderController extends Controller
 {
     //
     protected $orderService;
+    protected $orderDetailService;
 
-    public function __construct(OrderService $orderService)
+    public function __construct(OrderService $orderService, OrderDetailService $orderDetailService)
     {
         $this->orderService = $orderService;
+        $this->orderDetailService = $orderDetailService;
     }
 
     public function index()
@@ -58,5 +61,9 @@ class OrderController extends Controller
         $status = $request->statuss;
         $orders = $this->orderService->findAllByUserAndStatus($user_id, $status);
         return response()->json($orders['orders'], $orders['statusCode']);
+    }
+    public function findAllOrderDetailByOrder($orderId){
+        $orderDetail = $this->orderDetailService->findAllOrderDetailByOrder($orderId);
+        return response()->json($orderDetail['orderDetails'], $orderDetail['statusCode']);
     }
 }

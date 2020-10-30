@@ -115,6 +115,7 @@ Route::group(['middleware' => 'auth.jwt'], function () {
         Route::get('/', 'OrderController@index')->name('order.all');
         Route::get('/users/{id}', 'OrderController@findAllByUserAndStatus')->name('order.findAllByUserAndStatus');
         Route::get('/{id}', 'OrderController@show')->name('order.show');
+        Route::get('/{id}/order-details','OrderController@findAllOrderDetailByOrder')->name('order.findAllOrderDetailByOrder');
         Route::post('/', 'OrderController@store')->name('order.store');
         Route::put('/{id}', 'OrderController@update')->name('order.update');
         Route::delete('/{id}', 'OrderController@destroy')->name('order.destroy');
