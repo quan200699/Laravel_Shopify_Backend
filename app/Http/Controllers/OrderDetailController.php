@@ -46,4 +46,8 @@ class OrderDetailController extends Controller
         $orderDetail = $this->orderDetailService->destroy($id);
         return response()->json($orderDetail['message'], $orderDetail['statusCode']);
     }
+    public function sumAllProductAmountInOrderDetail($product_id){
+        $orderDetail = $this->orderDetailService->sumAllProductAmountInOrderDetail($product_id);
+        return response()->json($orderDetail['orderDetails'], $orderDetail['statusCode']);
+    }
 }

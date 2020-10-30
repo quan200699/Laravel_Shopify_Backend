@@ -100,4 +100,19 @@ class OrderDetailServiceImpl implements OrderDetailService
         ];
         return $data;
     }
+
+    public function sumAllProductAmountInOrderDetail($product_id)
+    {
+        $orderDetail = $this->orderDetailRepository->sumAllProductAmountInOrderDetail($product_id);
+        $statusCode = 200;
+        if (!$orderDetail) {
+            $statusCode = 404;
+        }
+        $data = [
+            'statusCode' => $statusCode,
+            'orderDetails' => $orderDetail
+        ];
+        return $data;
+        // TODO: Implement sumAllProductAmountInOrderDetail() method.
+    }
 }

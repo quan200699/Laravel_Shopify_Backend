@@ -129,6 +129,7 @@ Route::group(['middleware' => 'auth.jwt'], function () {
     Route::group(['prefix' => 'order-details'], function () {
         Route::get('/', 'OrderDetailController@index')->name('orderDetail.all');
         Route::get('/{id}', 'OrderDetailController@show')->name('orderDetail.show');
+        Route::get('/{id}/sum', 'OrderDetailController@sumAllProductAmountInOrderDetail')->name('orderDetail.sumAllProductAmountInOrderDetail');
         Route::post('/', 'OrderDetailController@store')->name('orderDetail.store');
         Route::put('/{id}', 'OrderDetailController@update')->name('orderDetail.update');
         Route::delete('/{id}', 'OrderDetailController@destroy')->name('orderDetail.destroy');
