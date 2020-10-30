@@ -84,4 +84,19 @@ class WarehouseBillDetailServiceImpl implements WarehouseBillDetailService
         ];
         return $data;
     }
+
+    public function findAllByWarehouseBill($warehouseBillId)
+    {
+
+        $wareHouseBillDetail = $this->warehouseBillDetailRepository->findAllByWarehouseBill($warehouseBillId);
+        $statusCode = 200;
+        if (!$wareHouseBillDetail) {
+            $statusCode = 404;
+        }
+        $data = [
+            'statusCode' => $statusCode,
+            'wareHouseBillDetails' => $wareHouseBillDetail
+        ];
+        return $data;
+    }
 }
