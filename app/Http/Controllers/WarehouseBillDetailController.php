@@ -46,4 +46,10 @@ class WarehouseBillDetailController extends Controller
         $warehouseBillDetail = $this->warehouseBillDetailService->destroy($id);
         return response()->json($warehouseBillDetail['message'], $warehouseBillDetail['statusCode']);
     }
+
+    public function sumAllProduct($productId)
+    {
+        $totalProduct = $this->warehouseBillDetailService->sumAllProduct($productId);
+        return response()->json($totalProduct['totalProduct'], $totalProduct['statusCode']);
+    }
 }

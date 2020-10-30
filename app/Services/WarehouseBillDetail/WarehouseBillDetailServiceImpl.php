@@ -87,7 +87,6 @@ class WarehouseBillDetailServiceImpl implements WarehouseBillDetailService
 
     public function findAllByWarehouseBill($warehouseBillId)
     {
-
         $wareHouseBillDetail = $this->warehouseBillDetailRepository->findAllByWarehouseBill($warehouseBillId);
         $statusCode = 200;
         if (!$wareHouseBillDetail) {
@@ -96,6 +95,20 @@ class WarehouseBillDetailServiceImpl implements WarehouseBillDetailService
         $data = [
             'statusCode' => $statusCode,
             'wareHouseBillDetails' => $wareHouseBillDetail
+        ];
+        return $data;
+    }
+
+    public function sumAllProduct($productId)
+    {
+        $totalProduct = $this->warehouseBillDetailRepository->sumAllProduct($productId);
+        $statusCode = 200;
+        if (!$totalProduct) {
+            $statusCode = 404;
+        }
+        $data = [
+            'statusCode' => $statusCode,
+            'totalProduct' => $totalProduct
         ];
         return $data;
     }
