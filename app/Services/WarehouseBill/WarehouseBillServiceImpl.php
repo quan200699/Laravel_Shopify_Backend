@@ -85,4 +85,18 @@ class WarehouseBillServiceImpl implements WarehouseBillService
         ];
         return $data;
     }
+
+    public function sumTotalPriceHaveBought($month, $year)
+    {
+        $totalMoney = $this->warehouseBillRepository->sumTotalPriceHaveBought($month, $year);
+        $statusCode = 200;
+        if (!$totalMoney) {
+            $statusCode = 404;
+        }
+        $data = [
+            'statusCode' => $statusCode,
+            'totalMoney' => $totalMoney
+        ];
+        return $data;
+    }
 }
