@@ -112,4 +112,18 @@ class OrderServiceImpl implements OrderService
         ];
         return $data;
     }
+
+    public function sumAllPriceInOrder($month, $year)
+    {
+        $orders = $this->orderRepository->sumAllPriceInOrder($month , $year);
+        $statusCode = 200;
+        if (!$orders) {
+            $statusCode = 404;
+        }
+        $data = [
+            'statusCode' => $statusCode,
+            'orders' => $orders
+        ];
+        return $data;
+    }
 }

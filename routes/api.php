@@ -119,6 +119,7 @@ Route::group(['middleware' => 'auth.jwt'], function () {
         Route::get('/', 'OrderController@index')->name('order.all');
         Route::get('/users/{id}', 'OrderController@findAllByUserAndStatus')->name('order.findAllByUserAndStatus');
         Route::get('/{id}', 'OrderController@show')->name('order.show');
+        Route::get('/total-price', 'OrderController@sumAllPriceInOrder')->name('order.sumAllPriceInOrder');
         Route::get('/{id}/order-details','OrderController@findAllOrderDetailByOrder')->name('order.findAllOrderDetailByOrder');
         Route::get('/users/{id}/products','OrderController@findAllProductsByUser')->name('order.findAllProductsByUser');
         Route::post('/', 'OrderController@store')->name('order.store');
