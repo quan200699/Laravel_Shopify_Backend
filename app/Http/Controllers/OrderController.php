@@ -23,6 +23,7 @@ class OrderController extends Controller
     public function index()
     {
         $order = $this->orderService->getAll();
+        dd($order);
         return response()->json($order, 200);
     }
 

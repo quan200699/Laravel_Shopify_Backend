@@ -48,11 +48,11 @@ class OrderRepositoryImpl extends EloquentRepository implements OrderRepository
     public function sumAllPriceInOrder($month, $year)
     {
         $result = DB::table('orders')
-            ->selectRaw('sum(order_details.amount*products.price) as totalPrice')
+            ->selectRaw('sum(amount*price) as totalPrice')
             ->leftJoin('order_details', 'orders.id', '=', 'order_details.orders_id')
             ->leftJoin('products', 'order_details.product_id', '=', 'products.id')
-            ->whereMonth('create_date', $month)
-            ->whereYear('create_date', $year)
+            ->whereMonth('create_date', '=', $month)
+            ->whereYear('create_date', '=', $year)
             ->first();
         return $result;
     }
