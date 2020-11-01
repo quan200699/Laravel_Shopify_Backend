@@ -41,6 +41,5 @@ class OrderDetailRepositoryImpl extends EloquentRepository implements OrderDetai
             ->groupBy('products.id')
             ->first();
         return $result;
-        // TODO: Implement sumAllProductAmountInOrderDetail() method.
     }
 }
