@@ -21,7 +21,7 @@ class CreateProductsTable extends Migration
             $table->string('preservation')->nullable();
             $table->string('ingredient')->nullable();
             $table->integer('mass')->nullable();
-            $table->string('description')->nullable();
+            $table->longText('description')->nullable();
             $table->integer('saleOff')->nullable();
             $table->timestamp('createdDate')->nullable();
         });
