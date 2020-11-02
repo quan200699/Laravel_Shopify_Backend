@@ -23,7 +23,7 @@ class OrderDetailRepositoryImpl extends EloquentRepository implements OrderDetai
 
     public function findByIdWithRelationship($id)
     {
-        return OrderDetail::with('orders', 'product')->where('id', $id)->get();
+        return OrderDetail::with('orders', 'product')->where('id', $id)->first();
     }
 
     public function findAllOrderDetailByOrder($orderId)

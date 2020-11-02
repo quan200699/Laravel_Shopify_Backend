@@ -37,6 +37,6 @@ class ReviewRepositoryImpl extends EloquentRepository implements ReviewRepositor
 
     public function findByIdWithRelationship($id)
     {
-        return Review::with('user', 'product')->where('id', $id);
+        return Review::with('user', 'product')->where('id', $id)->first();
     }
 }

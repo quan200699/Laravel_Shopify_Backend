@@ -29,6 +29,6 @@ class ShoppingCartRepositoryImpl extends EloquentRepository implements ShoppingC
 
     public function findByIdWithRelationship($id)
     {
-        return ShoppingCart::with('user')->where('id', $id)->get();
+        return ShoppingCart::with('user')->where('id', $id)->first();
     }
 }

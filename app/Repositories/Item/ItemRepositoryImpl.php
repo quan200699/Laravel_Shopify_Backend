@@ -30,6 +30,6 @@ class ItemRepositoryImpl extends EloquentRepository implements ItemRepository
 
     public function findByIdWithRelationship($id)
     {
-        return Item::with('product', 'shoppingCart')->where('id', $id)->get();
+        return Item::with('product', 'shoppingCart')->where('id', $id)->first();
     }
 }

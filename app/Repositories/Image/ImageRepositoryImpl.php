@@ -29,6 +29,6 @@ class ImageRepositoryImpl extends EloquentRepository implements ImageRepository
 
     public function findByIdWithRelationship($id)
     {
-        return Image::with('product')->where('id', $id)->get();
+        return Image::with('product')->where('id', $id)->first();
     }
 }

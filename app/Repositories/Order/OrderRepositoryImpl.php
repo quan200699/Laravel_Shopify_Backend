@@ -32,7 +32,7 @@ class OrderRepositoryImpl extends EloquentRepository implements OrderRepository
 
     public function findByIdWithRelationship($id)
     {
-        return Order::with('user')->where('id', $id)->get();
+        return Order::with('user')->where('id', $id)->first();
     }
 
     public function findAllProductsByUser($user_id)

@@ -41,6 +41,6 @@ class NotificationRepositoryImpl extends EloquentRepository implements Notificat
 
     public function findByIdWithRelationship($id)
     {
-        return Notification::with('user')->where('id', $id)->get();
+        return Notification::with('user')->where('id', $id)->first();
     }
 }

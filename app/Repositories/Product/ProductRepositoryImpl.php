@@ -49,7 +49,7 @@ class ProductRepositoryImpl extends EloquentRepository implements ProductReposit
 
     public function findByIdWithRelationship($id)
     {
-        return Product::with('category')->where('id', $id)->get();
+        return Product::with('category')->where('id', $id)->first();
     }
 
     public function getAllProductLatest()

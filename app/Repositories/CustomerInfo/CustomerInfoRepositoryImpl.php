@@ -22,6 +22,6 @@ class CustomerInfoRepositoryImpl extends EloquentRepository implements CustomerI
 
     public function findByIdWithRelationship($id)
     {
-        return CustomerInfo::with('user')->where('id', $id)->get();
+        return CustomerInfo::with('user')->where('id', $id)->first();
     }
 }
