@@ -8,7 +8,7 @@ class Image extends Model
 {
     //
     public $timestamps = false;
-    protected $fillable = ['url'];
+    protected $fillable = ['url', 'product_id'];
 
     public function product()
     {

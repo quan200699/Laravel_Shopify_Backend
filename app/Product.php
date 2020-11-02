@@ -17,7 +17,7 @@ class Product extends Model
         'createDate',
         'mass',
         'preservation',
-//        'category',
+        'category_id',
         'ingredient',
         'description',
     ];
