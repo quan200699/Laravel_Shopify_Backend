@@ -9,7 +9,8 @@ class WarehouseBill extends Model
     //
     public $timestamps = false;
     protected $fillable = [
-        'warehouse_id'
+        'warehouse_id',
+        'create_date'
     ];
     protected $casts = [
         'create_date' => 'datetime',

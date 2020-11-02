@@ -8,7 +8,10 @@ class Notification extends Model
 {
     //
     public $timestamps = false;
-    protected $fillable = ['message'];
+    protected $fillable = ['message',
+        'create_date',
+        'status',
+        'user_id'];
 
     public function user()
     {

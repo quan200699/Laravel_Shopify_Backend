@@ -8,7 +8,9 @@ class Item extends Model
 {
     //
     public $timestamps = false;
-    protected $fillable = ['quantity'];
+    protected $fillable = ['quantity',
+        'product_id',
+        'shopping_cart_id'];
 
     public function shoppingCart()
     {

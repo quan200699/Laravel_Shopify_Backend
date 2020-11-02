@@ -8,14 +8,22 @@ class Review extends Model
 {
     //
     public $timestamps = false;
-    protected $fillable = ['comment'];
+    protected $fillable = ['comment',
+        'evaluate',
+        'product_id',
+        'createDate',
+        'user_id'];
     protected $casts = [
         'createDate' => 'datetime',
     ];
-    public function product(){
+
+    public function product()
+    {
         return $this->belongsTo('App\Product');
     }
-    public function user(){
+
+    public function user()
+    {
         return $this->belongsTo('App\User');
     }
 }
