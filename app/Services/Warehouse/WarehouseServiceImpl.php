@@ -18,12 +18,12 @@ class WarehouseServiceImpl implements WarehouseService
 
     public function getAll()
     {
-        return $this->warehouseRepository->getAllWithRelationship();
+        return $this->warehouseRepository->getAll();
     }
 
     public function findById($id)
     {
-        $warehouse = $this->warehouseRepository->findByIdWithRelationship($id);
+        $warehouse = $this->warehouseRepository->findById($id);
         $statusCode = 200;
         if (!$warehouse) {
             $statusCode = 404;
