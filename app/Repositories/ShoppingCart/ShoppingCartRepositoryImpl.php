@@ -18,7 +18,7 @@ class ShoppingCartRepositoryImpl extends EloquentRepository implements ShoppingC
 
     public function findByUser($userId)
     {
-        $result = ShoppingCart::with('user')->where('user_id', $userId)->get();
+        $result = ShoppingCart::with('user')->where('user_id', $userId)->first();
         return $result;
     }
 
