@@ -35,6 +35,7 @@ class AuthController extends Controller
             array_push($roles, $role);
         }
         return response()->json([
+            'id' => $user->id,
             'accessToken' => $token,
             'email' => $user->email,
             'fullName' => $user->fullName,
