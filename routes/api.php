@@ -70,6 +70,9 @@ Route::group(['prefix' => 'carts'], function () {
 Route::group(['prefix' => 'items'], function () {
     Route::get('/', 'ItemController@index')->name('items.all');
     Route::get('/{id}', 'ItemController@show')->name('items.show');
+    Route::post('/', 'ItemController@store')->name('items.store');
+    Route::put('/{id}', 'ItemController@update')->name('items.update');
+    Route::delete('/{id}', 'ItemController@destroy')->name('items.destroy');
 });
 Route::group(['prefix' => 'users'], function () {
     Route::get('/{id}/notifications', 'UserController@getAllNotificationByUser')->name('users.getAllNotificationByUser');
@@ -138,11 +141,6 @@ Route::group(['middleware' => 'auth.jwt'], function () {
         Route::post('/', 'ShoppingCartController@store')->name('carts.store');
         Route::put('/{id}', 'ShoppingCartController@update')->name('carts.update');
         Route::delete('/{id}', 'ShoppingCartController@destroy')->name('carts.destroy');
-    });
-    Route::group(['prefix' => 'items'], function () {
-        Route::post('/', 'ItemController@store')->name('items.store');
-        Route::put('/{id}', 'ItemController@update')->name('items.update');
-        Route::delete('/{id}', 'ItemController@destroy')->name('items.destroy');
     });
     Route::group(['prefix' => 'warehouse-bill-details'], function () {
         Route::post('/', 'WarehouseBillDetailController@store')->name('warehouseBillDetail.store');
