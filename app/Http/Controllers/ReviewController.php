@@ -35,7 +35,8 @@ class ReviewController extends Controller
         $review->comment = $request->comment;
         $review->evaluate = $request->evaluate;
         $review->product_id = $request->product_id;
-        $review->create_date = Carbon::now();
+        $review->user_id = $request->user_id;
+        $review->createDate = Carbon::now();
         $dataReview = $this->reviewService->create($review);
 
         return response()->json($dataReview['reviews'], $dataReview['statusCode']);

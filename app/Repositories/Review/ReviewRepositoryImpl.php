@@ -20,7 +20,7 @@ class ReviewRepositoryImpl extends EloquentRepository implements ReviewRepositor
     {
         $result = Review::with('user', 'product')->where('user_id', $userId)
             ->where('product_id', $productId)
-            ->get();
+            ->first();
         return $result;
     }
 
