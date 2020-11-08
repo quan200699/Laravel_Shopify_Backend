@@ -24,7 +24,14 @@ class AuthController extends Controller
     public function login(Request $request)
     {
         $facebookUser = $this->userService->findFacebookUser($request->facebook_id);
+        $googleUser = $this->userService->findGoogleUser($request->google_id);
         if ($facebookUser == null && $request->facebook_id != null) {
+            return response()->json([
+                'status' => false,
+                'message' => 'Tài khoản chưa được đăng ký',
+            ], 404);
+        }
+        if ($googleUser == null && $request->google_id != null) {
             return response()->json([
                 'status' => false,
                 'message' => 'Tài khoản chưa được đăng ký',
@@ -81,6 +88,7 @@ class AuthController extends Controller
         $user->password = bcrypt($request->password);
         $user->email = $request->email;
         $user->facebook_id = $request->facebook_id;
+        $user->google_id = $request->google_id;
         $user->fullName = $request->fullName;
         $dataUser = $this->userService->create($user);
         $roles = Role::all();
