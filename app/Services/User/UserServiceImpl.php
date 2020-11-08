@@ -37,9 +37,14 @@ class UserServiceImpl implements UserService
 
     public function create($request)
     {
-        $result = $request->save();
-
         $statusCode = 201;
+        $facebookUser = $this->userRepository->findFacebookUser($request->facebook_id);
+        if ($facebookUser) {
+            $statusCode = 500;
+        } else {
+            $result = $request->save();
+        }
+
         if (!$result)
             $statusCode = 500;
 
@@ -92,9 +97,9 @@ class UserServiceImpl implements UserService
         return $user;
     }
 
-    public function getAllFacebookAccount($facebook_id)
+    public function findFacebookUser($facebook_id)
     {
-        $user = $this->userRepository->isAccountFacebookExisted($facebook_id);
+        $user = $this->userRepository->findFacebookUser($facebook_id);
         return $user;
     }
 }

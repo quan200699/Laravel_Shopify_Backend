@@ -10,5 +10,5 @@ interface UserRepository extends Repository
 {
     public function findByEmail($email);
 
-    public function isAccountFacebookExisted($facebook_id);
+    public function findFacebookUser($facebook_id);
 }

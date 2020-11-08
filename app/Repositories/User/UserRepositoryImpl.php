@@ -6,6 +6,7 @@ namespace App\Repositories\User;
 
 use App\Repositories\Eloquent\EloquentRepository;
 use App\User;
+use Illuminate\Support\Facades\DB;
 
 class UserRepositoryImpl extends EloquentRepository implements UserRepository
 {
@@ -31,9 +32,10 @@ class UserRepositoryImpl extends EloquentRepository implements UserRepository
         // TODO: Implement findByIdWithRelationship() method.
     }
 
-    public function isAccountFacebookExisted($facebook_id)
+    public function findFacebookUser($facebook_id)
     {
-        $result = $this->model->where('facebook_id', $facebook_id)->first();
+        $result = DB::table('users')->where('facebook_id', $facebook_id)
+            ->whereNotNull('facebook_id')->first();
         return $result;
     }
 }

@@ -9,5 +9,5 @@ interface UserService extends Service
 {
     function findByEmail($name);
 
-    public function getAllFacebookAccount($facebook_id);
+    public function findFacebookUser($facebook_id);
 }
