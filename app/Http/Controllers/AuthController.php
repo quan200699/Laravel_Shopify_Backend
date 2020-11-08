@@ -71,7 +71,7 @@ class AuthController extends Controller
         $user = new User();
         $user->password = bcrypt($request->password);
         $user->email = $request->email;
-        $user->id = $request->id;
+        $user->facebook_id = $request->facebook_id;
         $user->fullName = $request->fullName;
         $dataUser = $this->userService->create($user);
         $roles = Role::all();
