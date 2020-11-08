@@ -23,6 +23,13 @@ class AuthController extends Controller
 
     public function login(Request $request)
     {
+        $facebookUser = $this->userService->findFacebookUser($request->facebook_id);
+        if ($facebookUser == null && $request->facebook_id != null) {
+            return response()->json([
+                'status' => false,
+                'message' => 'Tài khoản chưa được đăng ký',
+            ], 404);
+        }
         $input = $request->only('email', 'password');
         $token = null;
         if (!$token = JWTAuth::attempt($input)) {
