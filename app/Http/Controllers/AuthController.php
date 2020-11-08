@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Role;
 use App\Services\User\UserService;
 use App\ShoppingCart;
 use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Tymon\JWTAuth\Exceptions\JWTException;
 use Tymon\JWTAuth\Facades\JWTAuth;
 
@@ -69,8 +71,14 @@ class AuthController extends Controller
         $user = new User();
         $user->password = bcrypt($request->password);
         $user->email = $request->email;
+        $user->id = $request->id;
         $user->fullName = $request->fullName;
         $dataUser = $this->userService->create($user);
+        $roles = Role::all();
+        DB::table('roles_users')->insert([
+            'user_id' => $dataUser['users']->id,
+            'role_id' => $roles[1]->id
+        ]);
         $cart = new ShoppingCart();
         $cart->user_id = $dataUser['users']->id;
         $cart->save();
