@@ -30,7 +30,9 @@ class AuthController extends Controller
                 'message' => 'Tài khoản chưa được đăng ký',
             ], 404);
         }
-        $input = $request->only('email', 'password');
+        $password = $request->password;
+        $email = $request->email;
+        $input = ['email' => $email, 'password' => $password];
         $token = null;
         if (!$token = JWTAuth::attempt($input)) {
             return response()->json([
