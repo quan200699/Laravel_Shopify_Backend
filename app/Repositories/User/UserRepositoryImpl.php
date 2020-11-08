@@ -31,9 +31,9 @@ class UserRepositoryImpl extends EloquentRepository implements UserRepository
         // TODO: Implement findByIdWithRelationship() method.
     }
 
-    public function getAllFacebookAccount()
+    public function isAccountFacebookExisted($facebook_id)
     {
-        $result = $this->model->where('facebook_id', '<>', null)->get();
+        $result = $this->model->where('facebook_id', $facebook_id)->first();
         return $result;
     }
 }

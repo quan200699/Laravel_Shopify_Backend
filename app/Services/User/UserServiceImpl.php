@@ -92,9 +92,9 @@ class UserServiceImpl implements UserService
         return $user;
     }
 
-    public function getAllFacebookAccount()
+    public function getAllFacebookAccount($facebook_id)
     {
-        $user = $this->userRepository->getAllFacebookAccount();
+        $user = $this->userRepository->isAccountFacebookExisted($facebook_id);
         return $user;
     }
 }
