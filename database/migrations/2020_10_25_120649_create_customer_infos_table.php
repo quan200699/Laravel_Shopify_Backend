@@ -19,7 +19,7 @@ class CreateCustomerInfosTable extends Migration
             $table->string('email');
             $table->string('name');
             $table->string('phone_number');
-            $table->unsignedInteger('user_id');
+            $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users');
         });
     }

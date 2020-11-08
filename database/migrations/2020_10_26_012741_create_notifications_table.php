@@ -18,7 +18,7 @@ class CreateNotificationsTable extends Migration
             $table->string('message')->nullable();
             $table->timestamp('create_date')->nullable();
             $table->boolean('status')->nullable();
-            $table->unsignedInteger('user_id')->nullable();
+            $table->unsignedBigInteger('user_id')->nullable();
             $table->foreign('user_id')->references('id')->on('users');
         });
     }
