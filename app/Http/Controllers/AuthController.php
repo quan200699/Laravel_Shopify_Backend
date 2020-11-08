@@ -23,15 +23,15 @@ class AuthController extends Controller
 
     public function login(Request $request)
     {
-        $facebookUser = $this->userService->findFacebookUser($request->facebook_id);
-        $googleUser = $this->userService->findGoogleUser($request->google_id);
-        if ($facebookUser == null && $request->facebook_id != null) {
+        $facebookUser = $this->userService->findFacebookUser($request->social_id);
+        $googleUser = $this->userService->findGoogleUser($request->social_id);
+        if ($facebookUser == null && $request->social_id != null) {
             return response()->json([
                 'status' => false,
                 'message' => 'Tài khoản chưa được đăng ký',
             ], 404);
         }
-        if ($googleUser == null && $request->google_id != null) {
+        if ($googleUser == null && $request->social_id != null) {
             return response()->json([
                 'status' => false,
                 'message' => 'Tài khoản chưa được đăng ký',
