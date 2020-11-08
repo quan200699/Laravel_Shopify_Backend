@@ -17,7 +17,7 @@ class UserRepositoryImpl extends EloquentRepository implements UserRepository
 
     public function findByEmail($email)
     {
-        $result = $this->model->where('email',$email)->first();
+        $result = $this->model->where('email', $email)->first();
         return $result;
     }
 
@@ -29,5 +29,11 @@ class UserRepositoryImpl extends EloquentRepository implements UserRepository
     public function findByIdWithRelationship($id)
     {
         // TODO: Implement findByIdWithRelationship() method.
+    }
+
+    public function getAllFacebookAccount()
+    {
+        $result = $this->model->where('facebook_id', '<>', null)->get();
+        return $result;
     }
 }
