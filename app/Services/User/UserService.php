@@ -8,4 +8,6 @@ use App\Services\Service;
 interface UserService extends Service
 {
     function findByEmail($name);
+
+    public function getAllFacebookAccount();
 }

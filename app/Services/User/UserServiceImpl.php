@@ -91,4 +91,10 @@ class UserServiceImpl implements UserService
         $user = $this->userRepository->findByEmail($email);
         return $user;
     }
+
+    public function getAllFacebookAccount()
+    {
+        $user = $this->userRepository->getAllFacebookAccount();
+        return $user;
+    }
 }
