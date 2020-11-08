@@ -38,4 +38,11 @@ class UserRepositoryImpl extends EloquentRepository implements UserRepository
             ->whereNotNull('facebook_id')->first();
         return $result;
     }
+
+    public function findGoogleUser($google_id)
+    {
+        $result = DB::table('users')->where('facebook_id', $google_id)
+            ->whereNotNull('facebook_id')->first();
+        return $result;
+    }
 }

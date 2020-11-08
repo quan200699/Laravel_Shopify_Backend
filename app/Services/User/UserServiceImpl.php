@@ -102,4 +102,10 @@ class UserServiceImpl implements UserService
         $user = $this->userRepository->findFacebookUser($facebook_id);
         return $user;
     }
+
+    public function findGoogleUser($google_id)
+    {
+        $user = $this->userRepository->findFacebookUser($google_id);
+        return $user;
+    }
 }

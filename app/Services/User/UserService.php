@@ -10,4 +10,6 @@ interface UserService extends Service
     function findByEmail($name);
 
     public function findFacebookUser($facebook_id);
+
+    public function findGoogleUser($google_id);
 }
