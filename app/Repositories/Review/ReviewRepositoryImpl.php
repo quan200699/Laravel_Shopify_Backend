@@ -26,13 +26,18 @@ class ReviewRepositoryImpl extends EloquentRepository implements ReviewRepositor
 
     public function getAllReviewByProduct($productId)
     {
-        $result = Review::with('user', 'product')->where('product_id', $productId)->get();
+        $result = Review::with('user', 'product')
+            ->where('product_id', $productId)
+            ->orderBy('createDate', 'desc')
+            ->get();
         return $result;
     }
 
     public function getAllWithRelationship()
     {
-        return Review::with('user', 'product')->get();
+        return Review::with('user', 'product')
+            ->orderBy('createDate', 'desc')
+            ->get();
     }
 
     public function findByIdWithRelationship($id)

@@ -19,7 +19,9 @@ class WarehouseBillRepositoryImpl extends EloquentRepository implements Warehous
 
     public function getAllWithRelationship()
     {
-        return WarehouseBill::with('warehouse')->get();
+        return WarehouseBill::with('warehouse')
+            ->orderBy('create_date', 'desc')
+            ->get();
     }
 
     public function findByIdWithRelationship($id)

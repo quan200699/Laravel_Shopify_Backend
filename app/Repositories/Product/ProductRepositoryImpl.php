@@ -18,13 +18,19 @@ class ProductRepositoryImpl extends EloquentRepository implements ProductReposit
 
     public function findAllByCategory($categoryId)
     {
-        $result = Product::with('category')->where('category_id', $categoryId)->get();
+        $result = Product::with('category')
+            ->where('category_id', $categoryId)
+            ->orderBy('createdDate', 'desc')
+            ->get();
         return $result;
     }
 
     public function findAllBySaleOffGreaterThanZero()
     {
-        $result = Product::with('category')->where('saleOff', '>', 0)->get();
+        $result = Product::with('category')
+            ->where('saleOff', '>', 0)
+            ->orderBy('createdDate', 'desc')
+            ->get();
         return $result;
     }
 
@@ -32,24 +38,31 @@ class ProductRepositoryImpl extends EloquentRepository implements ProductReposit
     {
         $result = Product::with('category')->where('price', '>=', $min)
             ->where('price', '<=', $max)
+            ->orderBy('createdDate', 'desc')
             ->get();
         return $result;
     }
 
     public function getAllProductByName($name)
     {
-        $result = Product::with('category')->where('name', 'like', '%' . $name . '%')->get();
+        $result = Product::with('category')
+            ->where('name', 'like', '%' . $name . '%')
+            ->orderBy('createdDate', 'desc')
+            ->get();
         return $result;
     }
 
     public function getAllWithRelationship()
     {
-        return Product::with('category')->get();
+        return Product::with('category')
+            ->orderBy('createdDate', 'desc')
+            ->get();
     }
 
     public function findByIdWithRelationship($id)
     {
-        return Product::with('category')->where('id', $id)->first();
+        return Product::with('category')
+            ->where('id', $id)->first();
     }
 
     public function getAllProductLatest()

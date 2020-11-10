@@ -28,8 +28,7 @@ class OrderDetailRepositoryImpl extends EloquentRepository implements OrderDetai
 
     public function findAllOrderDetailByOrder($orderId)
     {
-        return OrderDetail::with('orders','product')->where('orders_id',$orderId)->get();
-        // TODO: Implement findAllOrderDetailByOrder() method.
+        return OrderDetail::with('orders', 'product')->where('orders_id', $orderId)->get();
     }
 
     public function sumAllProductAmountInOrderDetail($product_id)
