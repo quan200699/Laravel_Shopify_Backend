@@ -103,9 +103,6 @@ class WarehouseBillDetailServiceImpl implements WarehouseBillDetailService
     {
         $totalProduct = $this->warehouseBillDetailRepository->sumAllProduct($productId);
         $statusCode = 200;
-        if (!$totalProduct) {
-            $statusCode = 404;
-        }
         $data = [
             'statusCode' => $statusCode,
             'totalProduct' => $totalProduct

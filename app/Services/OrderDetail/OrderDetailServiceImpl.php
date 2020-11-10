@@ -105,9 +105,6 @@ class OrderDetailServiceImpl implements OrderDetailService
     {
         $orderDetail = $this->orderDetailRepository->sumAllProductAmountInOrderDetail($product_id);
         $statusCode = 200;
-//        if (!$orderDetail) {
-//            $statusCode = 404;
-//        }
         $data = [
             'statusCode' => $statusCode,
             'orderDetails' => $orderDetail
