@@ -19,6 +19,7 @@ class Product extends Model
         'preservation',
         'category_id',
         'ingredient',
+        'instructional',
         'description',
     ];
     protected $casts = [

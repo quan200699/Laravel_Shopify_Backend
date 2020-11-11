@@ -20,6 +20,7 @@ class CreateProductsTable extends Migration
             $table->boolean('status')->nullable();
             $table->string('preservation')->nullable();
             $table->string('ingredient')->nullable();
+            $table->string('instructional')->nullable();
             $table->integer('mass')->nullable();
             $table->longText('description')->nullable();
             $table->integer('saleOff')->nullable();
